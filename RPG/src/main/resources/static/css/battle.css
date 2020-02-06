@@ -1,0 +1,56 @@
+@import 'reset.css';
+.hpmp__window,
+.command__window,
+.message__window{
+    padding: 30px;
+    border: 5px solid #ccc;
+    border-radius: 15px;
+    display: flex;
+    position: absolute;
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
+}
+.hpmp__window{
+    white-space: nowrap;
+    width: 28vw;
+    height: 2vh;
+    left: 35vw;
+    top: 7vh;
+}
+.command__window{
+    width: 6vw;
+    height: 25vh;
+    left: 26vw;
+    top: 59vh;
+}
+.message__window{
+    width: 32vw;
+    height: 25vh;
+    left: 38vw;
+    top: 59vh;
+}
+.command__window li{
+    margin-left: 0.5vw;
+}
+.command__window li:first-child{
+    margin-top: 1vh;
+}
+.command__window li:not(:first-child){
+    margin-top: 4.5vh;
+}
+.menu_window > ul{
+    display: flex;
+    width: 30vw;
+}
+.enemy{
+    position: absolute;
+    left: 48vw;
+    bottom: 53vh;
+}
+.name{
+    width: 110px;
+    display: block;
+    margin-right: 2vw;
+    text-align: center;
+}

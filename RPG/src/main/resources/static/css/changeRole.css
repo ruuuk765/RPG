@@ -1,0 +1,68 @@
+@import 'reset.css';
+ul{
+    width: 30vw;
+    height: 26vh;
+    padding: 20px;
+    border: 5px solid #ccc;
+    border-radius: 15px;
+    margin: auto;
+    display: flex;
+    position: relative;
+}
+h1{
+    margin: 25vh auto 5vh;
+    width: 405px;
+    letter-spacing: 2px;
+    
+    font-size: 25px;
+    font-weight: bold;
+}
+img{
+    padding-top: 3.5vh;
+}
+body{
+    text-align: center;
+}
+label{
+    font-size: 20px;
+    font-weight: bold;
+}
+.return, .confirm{
+    position: absolute;
+    top: 235px;
+    left: 20px;
+    text-decoration: none;
+    font-size: 23px;
+    font-weight: bold;
+}
+.return > p, .confirm > p{
+    position: relative;
+    top: 6px;
+}
+.confirm{
+    left: 410px;
+}
+.disabled{
+    color: #a3a3a3;
+}
+.cane{
+    position: relative;
+    left: 9px;
+    bottom: 4px;
+}
+.sord{
+    position: relative;
+    left: 8px;
+}
+li > label:hover{
+    cursor: pointer;
+}
+.disabled:hover{
+    cursor: not-allowed;
+}
+li{
+    margin-top: 4.5vh;
+}
+p{
+    font-weight: bold;
+}

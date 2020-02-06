@@ -1,0 +1,60 @@
+@import 'reset.css';
+.hpmp__window,
+.status__window,
+.menu_window{
+    padding: 30px;
+    border: 5px solid #ccc;
+    border-radius: 15px;
+    margin: 10vh auto;
+    display: flex;
+    position: absolute;
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
+}
+.hpmp__window{
+    width: 12.5vw;
+    height: 2vh;
+    left: 28vw;
+    top: 2vh;
+}
+.status__window{
+    width: 20vw;
+    height: 63vh;
+    left: 60vw;
+    top: 2vh;
+    white-space: nowrap;
+}
+.menu_window{
+    width: 34vw;
+    height: 2.5vh;
+    left: 18vw;
+    top: 62.5vh;
+}
+.status__window li{
+    margin-top: 4vh;
+    margin-left: 1vw;
+}
+.status__window li:first-child{
+    margin-top: 2vh;
+}
+.menu_window li{
+    white-space: nowrap;
+}
+.menu_window li:not(:last-child){
+    margin-right: 2vw;
+}
+.menu_window > ul{
+    display: flex;
+    width: 30vw;
+}
+.icon{
+    position: absolute;
+    left: 24vw;
+    top: 34vh;
+}
+.weapon{
+    position: relative;
+    right: -2.5vw;
+    top: -2vh;
+}

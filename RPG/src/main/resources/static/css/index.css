@@ -1,0 +1,16 @@
+@import 'reset.css';
+ul{
+    width: 18vw;
+    height: 20vh;
+    padding: 20px;
+    border: 5px solid #ccc;
+    border-radius: 15px;
+    margin: 35vh auto;
+}
+p{
+    margin: 5vh auto;
+    width: 140px;
+    letter-spacing: 2px;
+    font-size: 25px;
+    font-weight: bold;
+}
