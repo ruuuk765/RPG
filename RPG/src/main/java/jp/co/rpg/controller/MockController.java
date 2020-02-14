@@ -10,9 +10,14 @@ public class MockController {
 		return "index";
 	}
 
-	@RequestMapping("/input")
-	public String input() {
-		return "input";
+	@RequestMapping("/regist")
+	public String regist() {
+		return "regist";
+	}
+
+	@RequestMapping("/login")
+	public String login() {
+		return "login";
 	}
 
 	@RequestMapping("/selectRole")
