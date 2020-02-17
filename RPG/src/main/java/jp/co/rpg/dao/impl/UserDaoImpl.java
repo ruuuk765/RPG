@@ -29,6 +29,15 @@ public class UserDaoImpl implements UserDao {
 			+ "current_date, current_date, "
 			+ ":adminFlg, :clearFlg, :deleteFlg)";
 
+	private static final String SQL_UPDATE = "UPDATE users SET"
+			+ "(SELECT MAX(id) + 1 FROM users), "
+			+ "password = :password, name = :name, role_id = :role_id, "
+			+ "lv = :lv, max_hp = :max_hp, hp = :hp, max_mp = :max_mp, mp = :mp,"
+			+ "power = :power, intelligence = :intelligence, defense = :defense, speed = :speed, "
+			+ "xp = :xp, gold = :gold, "
+			+ "since_days = :since_days, update_data = update_data, "
+			+ "WHERE user_id = :user_id";
+
 	@Override
 	public void createAccount(User user) {
 		MapSqlParameterSource param = new MapSqlParameterSource();
@@ -63,6 +72,26 @@ public class UserDaoImpl implements UserDao {
 			new BeanPropertyRowMapper<User>(User.class));
 
 		return list;
+	}
+
+	@Override
+	public void update(User user) {
+		MapSqlParameterSource param = new MapSqlParameterSource();
+		param.addValue("password", user.getPassword());
+		param.addValue("name", user.getName());
+		param.addValue("role_id", user.getRole().getId());
+		param.addValue("lv", user.getLv());
+		param.addValue("max_hp", user.getMaxHp());
+		param.addValue("hp", user.getHp());
+		param.addValue("max_mp", user.getMaxMp());
+		param.addValue("mp", user.getMp());
+		param.addValue("power", user.getPower());
+		param.addValue("intelligence", user.getIntelligence());
+		param.addValue("hp", user.getHp());
+		param.addValue("hp", user.getHp());
+
+		jdbcTemplate.update(SQL_UPDATE, param);
+
 	}
 
 }

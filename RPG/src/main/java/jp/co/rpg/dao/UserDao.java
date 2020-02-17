@@ -10,6 +10,7 @@ public interface UserDao {
 
 	public void createAccount(User user);
 	public List<User> find(User user);
+	public void updata(User user);
 
 
 }
