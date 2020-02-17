@@ -26,6 +26,14 @@ public class User {
 	private Integer clearFlg;
 	private Integer deleteFlg;
 
+	public User() {
+
+	}
+
+	public User(String userId, String password) {
+		this.userId = userId;
+		this.password = password;
+	}
 	// getter setter
 	public Integer getId() {
 		return id;
