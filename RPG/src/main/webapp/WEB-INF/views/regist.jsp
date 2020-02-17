@@ -13,39 +13,39 @@
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700&amp;subset=japanese" rel="stylesheet">
 </head>
 <body class="body">
-    <div class="errorMsg">
-        <p>※そのIDはしようされています</p>
-    </div>
+<!--     <div class="errorMsg"> -->
+<!--         <p>※そのIDはしようされています</p> -->
+<!--     </div> -->
     <section>
-        <form:form action="test" modelAttribute="test">
+        <form:form action="confirm" modelAttribute="test">
             <ul class="user__info">
                 <li>
                     <p>ID</p>
                     <div class="errorMsg">
-                        <form:errors path="userId" class="errorMsg" />
+                        <p><form:errors path="userId"/></p>
                     </div>
-                    <input type="text" name="" id="">
+                    <form:input path="userId"/>
                 </li>
                 <li>
                     <p>あんごう</p>
                     <div class="errorMsg">
-                        <p>※入力してください</p>
+                        <p><form:errors path="password"/></p>
                     </div>
-                    <input type="text" name="" id="">
+                    <form:password path="password"/>
                 </li>
                 <li>
                     <p>あんごう(かくにん)</p>
                     <div class="errorMsg">
-                        <p>※入力してください</p>
+                        <p><form:errors path="passwordCheck"/></p>
                     </div>
-                    <input type="text" name="" id="">
+                    <form:password path="passwordCheck"/>
                 </li>
                 <li>
                     <p>なまえ</p>
                     <div class="errorMsg">
-                        <p>※入力してください</p>
+                        <p><form:errors path="name"/></p>
                     </div>
-                    <input type="text" name="" id="">
+                    <form:input path="name"/>
                 </li>
             </ul>
             <ul class="role">
@@ -65,7 +65,6 @@
                     </label>
                 </li>
             </ul>
-        </form:form>
         <div class="return">
             <a href="index">
                 <img src="img/return.png" alt="#" width="50px" height="50px">
@@ -78,6 +77,7 @@
                 <p>きまり</p>
             </button>
         </div>
+        </form:form>
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript" src="js/fadeInOut.js"></script>

@@ -33,8 +33,7 @@ public class CreateAccountController {
 
 //	idex.jsp - regist.jsp
 	@RequestMapping("/regist")
-	public String createAccountPage(@Validated @ModelAttribute("test") CreateAccountForm form,
-			BindingResult bindingResult, Model model) {
+	public String createAccountPage(@ModelAttribute("test") CreateAccountForm form, Model model) {
 		model.addAttribute("list", service.getAll());
 		return "regist";
 	}
@@ -45,11 +44,8 @@ public class CreateAccountController {
 	BindingResult bindingResult, Model model) {
 
 		if (bindingResult.hasErrors()) {
-		 model.addAttribute("msg", "入力に誤りがあります");
 		 return "regist";
 		}
-
-
 
 //		IDの重複check
 		if(service.idCheck(form.getUserId())) {
