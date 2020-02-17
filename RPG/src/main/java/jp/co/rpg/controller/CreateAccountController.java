@@ -49,13 +49,13 @@ public class CreateAccountController {
 
 //		IDの重複check
 		if(service.idCheck(form.getUserId())) {
-			model.addAttribute("msg1", "そのIDはつかわれています");
+			model.addAttribute("msg", "そのIDはつかわれています");
 			return "regist";
 		}
 
 //		passwordの確認
 		if((form.getPassword()).equals(form.getPasswordCheck())) {
-			model.addAttribute("msg2", "あんごうとあんごうかくにんがいっちしません");
+			model.addAttribute("msg", "あんごうとあんごうかくにんがいっちしません");
 			return "regist";
 		}
 
@@ -66,7 +66,7 @@ public class CreateAccountController {
 		user.setName(form.getName());
 		user.setRoleId(form.getRoleId());
 		session.setAttribute("user", user);
-		return "confirm";
+		return "registConfirm";
 	}
 
 //	confirm.jsp - home.jsp

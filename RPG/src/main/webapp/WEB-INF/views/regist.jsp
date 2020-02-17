@@ -14,7 +14,7 @@
 </head>
 <body class="body">
     <div class="errorMsg">
-        <p>※そのIDはしようされています</p>
+        <p>${fn:escapeXml(msg)}</p>
     </div>
     <section>
         <form:form action="test" id="regist" method="post">
