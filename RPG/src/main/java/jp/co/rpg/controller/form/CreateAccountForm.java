@@ -6,15 +6,15 @@ import javax.validation.constraints.NotNull;
 public class CreateAccountForm {
 
 	// フィールド
-	@NotBlank
+	@NotBlank(message="※入力してください")
 	private String userId;
-	@NotNull
+	@NotNull(message="※入力してください")
 	private String password;
-	@NotNull
+	@NotNull(message="※入力してください")
 	private String passwordCheck;
-	@NotNull
+	@NotNull(message="※入力してください")
 	private String name;
-	@NotNull
+	@NotNull(message="※入力してください")
 	private Integer roleId;
 
 	// getter setter

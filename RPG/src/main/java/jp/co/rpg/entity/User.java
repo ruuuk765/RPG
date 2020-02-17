@@ -1,6 +1,9 @@
 package jp.co.rpg.entity;
 
+
 public class User {
+
+	Role role = new Role();
 
 	// フィールド
 	private Integer id;
@@ -8,6 +11,7 @@ public class User {
 	private String password;
 	private String name;
 	private Integer roleId;
+	private String roleName;
 	private Integer lv;
 	private Integer maxHp;
 	private Integer hp;
