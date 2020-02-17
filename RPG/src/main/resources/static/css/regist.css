@@ -10,8 +10,8 @@ section{
     left: 0;
     margin: auto;
     width: 550px;
-    height: 450px;
-    padding: 3vh;
+    height: 400px;
+    padding: 5vh;
     border: 5px solid #ccc;
     border-radius: 15px;
 }
@@ -98,18 +98,17 @@ body > .errorMsg p{
     font-size: 20px;
     line-height: 30px;
     text-align: center;
-    /* padding-top: 60px; */
-    padding-top: 4%;
+    padding-top: 10vh;
 }
 
 .return, .confirm{
-    width: 90px;
-    height: 100px;
+    width: 81px;
+    height: 88.1px;
     position: absolute;
-    top: 510px;
+    top: 105%;
 }
 .confirm{
-    left: 500px;
+    left: 520px;
 }
 .return img, .confirm img{
     display: block;

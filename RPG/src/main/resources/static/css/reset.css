@@ -66,9 +66,14 @@ button{
     -webkit-appearance: none;
      appearance: none;
      font-family: 'Noto Sans JP', sans-serif;
+     cursor: pointer;
 }
 
 button:active,
 button img {
     position: relative;
+}
+
+button:focus {
+	outline:0;
 }

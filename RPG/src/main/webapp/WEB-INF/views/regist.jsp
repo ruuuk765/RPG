@@ -17,7 +17,7 @@
         <p>※そのIDはしようされています</p>
     </div>
     <section>
-        <form action="test" id="login">
+        <form action="test" id="regist" method="post">
             <ul class="user__info">
                 <li>
                     <p>ID</p>
@@ -54,14 +54,14 @@
                     <label>
                         <input type="radio" name="role" id="role" value="1" checked>
                         <p>せんし</p>
-                        <img src="img/axe.png" width="72px" height="72px">
+                        <img src="img/weapon_01.png" width="72px" height="72px">
                      </label>
                 </li>
                 <li>
                     <label>
                         <input type="radio" name="role" id="role" value="2">
                         <p>まほうつかい</p>
-                        <img src="img/cane.png" width="72px" height="72px" class="cane">
+                        <img src="img/weapon_02.png" width="72px" height="72px" class="cane">
                     </label>
                 </li>
             </ul>
@@ -73,7 +73,7 @@
             </a>
         </div>
         <div class="confirm">
-            <button type="submit" id="login">
+            <button type="submit" form="regist">
                 <img src="img/confirm.png" alt="#" width="50px" height="50px">
                 <p>きまり</p>
             </button>

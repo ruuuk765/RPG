@@ -14,6 +14,10 @@ public class MockController {
 	public String regist() {
 		return "regist";
 	}
+	@RequestMapping("/test")
+	public String test() {
+		return "registConfirm";
+	}
 
 	@RequestMapping("/login")
 	public String login() {

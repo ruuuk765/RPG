@@ -71,13 +71,13 @@ input:focus{
 }
 
 .return, .confirm{
-    width: 90px;
-    height: 100px;
+    width: 81px;
+    height: 88.1px;
     position: absolute;
     top: 350px;
 }
 .confirm{
-    left: 410px;
+    left: 420px;
 }
 .return img, .confirm img{
     display: block;
@@ -86,7 +86,6 @@ input:focus{
 
 .return a{
     display:block;
-    height: 91.6px;
 }
 
 .return P{
