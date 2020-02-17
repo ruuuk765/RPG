@@ -86,7 +86,7 @@ section > ul > li:nth-child(2){
     left: 40%;
 }
 .statusWindow li{
-    height: calc(100% / 10);
+    height: calc(100% / 11);
     position: relative;
 }
 .statusWindow p{

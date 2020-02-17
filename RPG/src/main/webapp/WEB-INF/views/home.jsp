@@ -21,10 +21,10 @@
           <div class="hpmpWindow">
             <ul>
               <li>
-                <p>HP：52</p>
+                <p>HP：${fn:escapeXml(user.hp)}</p>
               </li>
               <li>
-                <p>MP：20</p>
+                <p>MP：${fn:escapeXml(user.mp)}</p>
               </li>
             </ul>
           </div>
@@ -61,22 +61,24 @@
                     <li><p>さいだいHP</p></li>
                     <li><p>さいだいMP</p></li>
                     <li><p>ちから</p></li>
+                    <li><p>かしこさ</p></li>
                     <li><p>ぼうぎょ</p></li>
                     <li><p>すばやさ</p></li>
                     <li><p>おかね</p></li>
                     <li><p>つぎのLVまで</p></li>
                   </ul>
                   <ul>
-                    <li><p>こんどう</p></li>
+                    <li><p>${fn:escapeXml(user.name)}</p></li>
                     <li><p>せんし</p></li>
-                    <li><p>8</p></li>
-                    <li><p>80</p></li>
-                    <li><p>30</p></li>
-                    <li><p>26</p></li>
-                    <li><p>18</p></li>
-                    <li><p>19</p></li>
-                    <li><p>600G</p></li>
-                    <li><p>1300XP</p></li>
+                    <li><p>${fn:escapeXml(user.lv)}</p></li>
+                    <li><p>${fn:escapeXml(user.maxHp)}</p></li>
+                    <li><p>${fn:escapeXml(user.maxMp)}</p></li>
+                    <li><p>${fn:escapeXml(user.power)}</p></li>
+                    <li><p>${fn:escapeXml(user.intelligence)}</p></li>
+                    <li><p>${fn:escapeXml(user.defense)}</p></li>
+                    <li><p>${fn:escapeXml(user.speed)}</p></li>
+                    <li><p>${fn:escapeXml(user.gold)}</p></li>
+                    <li><p>${fn:escapeXml(user.xp)}</p></li>
                   </ul>
                 </div>
               </li>
