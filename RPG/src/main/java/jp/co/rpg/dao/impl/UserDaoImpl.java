@@ -13,6 +13,8 @@ import jp.co.rpg.dao.UserDao;
 import jp.co.rpg.entity.User;
 import jp.co.rpg.util.Util;
 
+//制作日：2020.02.14
+//制作者：新垣
 @Repository
 public class UserDaoImpl implements UserDao {
 
@@ -29,7 +31,10 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public void createAccount(User user) {
-//		TODO 処理を記入
+		MapSqlParameterSource param = new MapSqlParameterSource();
+		param.addValue("userId", user.getUserId());
+
+		jdbcTemplate.update(SQL_CREATE_ACCOUNT, param);
 
 	}
 

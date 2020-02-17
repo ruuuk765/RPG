@@ -1,7 +1,12 @@
 package jp.co.rpg.service;
 
+import java.util.List;
+
+import jp.co.rpg.entity.Role;
 import jp.co.rpg.entity.User;
 
+//制作日：2020.02.14
+//制作者：新垣
 public interface CreateAccountService {
 
 //	 新規アカウントの初期値フィールドを作成
@@ -27,6 +32,10 @@ public interface CreateAccountService {
 
 //	 UserDaoを使って新しいアカウントを作成
 	public void createAccount(User user);
+
+
+//	Role全レコード取得
+	public List<Role> getAll();
 
 
 

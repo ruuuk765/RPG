@@ -1,9 +1,13 @@
 package jp.co.rpg.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jp.co.rpg.dao.RoleDao;
 import jp.co.rpg.dao.UserDao;
+import jp.co.rpg.entity.Role;
 import jp.co.rpg.entity.User;
 import jp.co.rpg.service.CreateAccountService;
 
@@ -12,6 +16,8 @@ public class CreateAccountServiceImpl implements CreateAccountService {
 
 	@Autowired
 	UserDao userDao;
+	@Autowired
+	RoleDao roleDao;
 
 	@Override
 	public boolean idCheck(String userId) {
@@ -43,6 +49,11 @@ public class CreateAccountServiceImpl implements CreateAccountService {
 		user.setDeleteFlg(deleteFlg);
 		userDao.createAccount(user);
 
+	}
+
+	@Override
+	public List<Role> getAll() {
+		return roleDao.getAll();
 	}
 
 }
