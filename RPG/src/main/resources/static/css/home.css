@@ -56,6 +56,9 @@ section > ul > li:nth-child(2){
     justify-content: center;
     align-items: center;
 }
+.menuWindow {
+    position: relative;
+}
 .menuWindow ul{
     display: flex;
 }
@@ -90,4 +93,12 @@ section > ul > li:nth-child(2){
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+}
+.message{
+    position: absolute;
+    top: -80%;
+    left: 50%;
+    transform: translateY(80%);
+    transform: translateX(-50%);
+    display: none;
 }

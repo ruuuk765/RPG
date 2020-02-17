@@ -16,40 +16,43 @@
   </head>
   <body class="body">
     <section>
-        <ul>
-            <li>
-                <div class="hpmpWindow">
-                    <ul>
-                        <li>
-                          <p>HP：52</p>
-                        </li>
-                        <li>
-                          <p>MP：20</p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="iconWindow">
-                  <img
-                    src="img/weapon_01.png"
-                    width="130px"
-                    height="160px"
-                    class="weapon"
+      <ul>
+        <li>
+          <div class="hpmpWindow">
+            <ul>
+              <li>
+                <p>HP：52</p>
+              </li>
+              <li>
+                <p>MP：20</p>
+              </li>
+            </ul>
+          </div>
+          <div class="iconWindow">
+            <img
+            src="img/weapon_01.png"
+                  width="130px"
+                  height="160px"
+                  class="weapon"
                   />
                   <img src="img/person.png" width="200px" height="200px" />
                 </div>
                 <div class="menuWindow">
-                    <ul>
-                      <li><a href="battle">せんとう</a></li>
-                      <li>ボス</li>
-                      <li>やすむ</li>
-                      <li><a href="changeRole">てんしょく</a></li>
-                      <li>セーブ</li>
-                      <li>へんしゅう</li>
-                      <li><a href="index">おわる</a></li>
-                    </ul>
+                  <div class="message">
+                    <p>セーブしました</p>
                   </div>
-            </li>
-            <li>
+                  <ul>
+                    <li><a href="battle">せんとう</a></li>
+                    <li>ボス</li>
+                  <li>やすむ</li>
+                  <li><a href="changeRole">てんしょく</a></li>
+                  <li><a href="#" class="save">セーブ</a></li>
+                    <li>へんしゅう</li>
+                    <li><a href="index">おわる</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
                 <div class="statusWindow">
                   <ul>
                     <li><p>なまえ</p></li>
@@ -76,9 +79,9 @@
                     <li><p>1300XP</p></li>
                   </ul>
                 </div>
-            </li>
-        </ul>
-    </section>
+              </li>
+            </ul>
+          </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript" src="js/fadeInOut.js"></script>
   </body>
