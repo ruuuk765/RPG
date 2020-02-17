@@ -17,12 +17,12 @@
         <p>※そのIDはしようされています</p>
     </div>
     <section>
-        <form action="test" id="login">
+        <form:form action="test" modelAttribute="test">
             <ul class="user__info">
                 <li>
                     <p>ID</p>
                     <div class="errorMsg">
-                        <p>※入力してください</p>
+                        <form:errors path="userId" class="errorMsg" />
                     </div>
                     <input type="text" name="" id="">
                 </li>
@@ -65,7 +65,7 @@
                     </label>
                 </li>
             </ul>
-        </form>
+        </form:form>
         <div class="return">
             <a href="index">
                 <img src="img/return.png" alt="#" width="50px" height="50px">

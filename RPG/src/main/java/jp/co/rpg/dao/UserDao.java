@@ -4,6 +4,8 @@ import java.util.List;
 
 import jp.co.rpg.entity.User;
 
+//制作日：2020.02.14
+//制作者：新垣
 public interface UserDao {
 
 	public void createAccount(User user);

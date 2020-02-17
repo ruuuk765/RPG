@@ -1,5 +1,7 @@
 package jp.co.rpg.entity;
 
+//制作日：2020.02.14
+//制作者：新垣
 public class User {
 
 	// フィールド
