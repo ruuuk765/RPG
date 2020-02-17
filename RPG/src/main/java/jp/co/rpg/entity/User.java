@@ -3,15 +3,12 @@ package jp.co.rpg.entity;
 
 public class User {
 
-	Role role = new Role();
-
 	// フィールド
 	private Integer id;
 	private String userId;
 	private String password;
 	private String name;
-	private Integer roleId;
-	private String roleName;
+	private Role role;
 	private Integer lv;
 	private Integer maxHp;
 	private Integer hp;
@@ -63,11 +60,19 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Integer getRoleId() {
-		return roleId;
-	}
 	public void setRoleId(Integer roleId) {
-		this.roleId = roleId;
+		if(role == null)
+			role = new Role();
+		role.setId(roleId);
+	}
+
+	public void setRoleName(String roleName) {
+		if(role == null)
+			role = new Role();
+		role.setName(roleName);
+	}
+	public Role getRole() {
+		return this.role;
 	}
 	public Integer getLv() {
 		return lv;
