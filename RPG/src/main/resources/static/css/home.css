@@ -1,60 +1,104 @@
 @import 'reset.css';
-.hpmp__window,
-.status__window,
-.menu_window{
-    padding: 30px;
-    border: 5px solid #ccc;
-    border-radius: 15px;
-    margin: 10vh auto;
-    display: flex;
+body{
+    position: relative;
+}
+section{
     position: absolute;
-    text-align: left;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 70%;
+    height: 70%;
     font-size: 18px;
     font-weight: bold;
 }
-.hpmp__window{
-    width: 12.5vw;
-    height: 2vh;
-    left: 28vw;
-    top: 2vh;
-}
-.status__window{
-    width: 20vw;
-    height: 63vh;
-    left: 60vw;
-    top: 2vh;
-    white-space: nowrap;
-}
-.menu_window{
-    width: 34vw;
-    height: 2.5vh;
-    left: 18vw;
-    top: 62.5vh;
-}
-.status__window li{
-    margin-top: 4vh;
-    margin-left: 1vw;
-}
-.status__window li:first-child{
-    margin-top: 2vh;
-}
-.menu_window li{
-    white-space: nowrap;
-}
-.menu_window li:not(:last-child){
-    margin-right: 2vw;
-}
-.menu_window > ul{
+section > ul{
     display: flex;
-    width: 30vw;
+    height: 100%;
 }
-.icon{
-    position: absolute;
-    left: 24vw;
-    top: 34vh;
+section > ul > li:first-child{
+    width: 65%;
 }
-.weapon{
+section > ul > li:nth-child(2){
+    width: 30%;
+    margin-left: auto;
+}
+.hpmpWindow,
+.menuWindow,
+.statusWindow{
+    padding: 3vh;
+    border: 5px solid #ccc;
+    border-radius: 15px;
+}
+.hpmpWindow {
+    margin: 0 auto;
+    width: 25%;
+    height: 3%;
+}
+.hpmpWindow ul{
+    display: flex;
+    height: 100%;
+    width: 90%;
+    margin: 0 auto;
+    white-space: nowrap;
+}
+.hpmpWindow ul li{
+  display: flex;
+  align-items: center;
+  max-width: 64.84px;
+  margin: 0 auto;
+}
+.iconWindow{
+    height: 72.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menuWindow {
     position: relative;
-    right: -2.5vw;
-    top: -2vh;
+}
+.menuWindow ul{
+    display: flex;
+}
+.menuWindow ul li{
+    margin: 0 auto;
+}
+.statusWindow{
+    padding: 3vh 4vh;
+    display: flex;
+    height: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+}
+.statusWindow ul{
+    height: 100%;
+    width: 50%;
+}
+.statusWindow ul:last-child p{
+    margin-left: auto;
+    text-align: right;
+    left: 40%;
+}
+.statusWindow li{
+    height: calc(100% / 11);
+    position: relative;
+}
+.statusWindow p{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.message{
+    position: absolute;
+    top: -80%;
+    left: 50%;
+    transform: translateY(80%);
+    transform: translateX(-50%);
+    display: none;
 }

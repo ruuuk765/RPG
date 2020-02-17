@@ -1,3 +1,4 @@
+// ページ全体フェードイン/アウト
 $('head').append(
     '<style type="text/css">.body{display:none;}</style>'
   );
@@ -20,7 +21,14 @@ $('head').append(
               setTimeout(function(){
                    location.href = url;
               }, 0);
-          }
-          return false;
-      });
+        }
+        return false;
+        });
+    });
+
+// ホーム画面、「セーブ」押下時のメッセージフェードイン/アウト
+  $('.save').on('click', function(){
+    $('.message').fadeIn("slow", function () {
+      $(this).delay(800).fadeOut("slow");
+    });
   });

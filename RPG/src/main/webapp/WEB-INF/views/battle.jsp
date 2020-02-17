@@ -9,36 +9,40 @@
     <meta charset="UTF-8">
     <title>勇者の冒険</title>
     <link rel="stylesheet" type="text/css" href="css/battle.css">
+    <link
+      href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700&amp;subset=japanese"
+      rel="stylesheet"
+    />
 </head>
 <body class="body">
-    <section class="hpmp">
-        <div class="hpmp__window">
-            <p class="name">ロト</p>
-            <p>HP：</p style="margin-left: 3vw;">52
-            <p style="margin-left: 3vw;">MP：</p>20
-            <p style="margin-left: 3vw;">LV：</p>8
-        </div>
-    </section>
-    <section class="enemy">
-        <img src="img/enemy__01.gif">
-    </section>
-    <section class="command">
-        <div class="command__window">
+    <section>
+        <div class="hpmpWindow">
             <ul>
-                <li>たたかう</li>
-                <li>まほう</li>
-                <li>ぼうぎょ</li>
-                <li><a href="home" class="link">にげる</a></li>
+                <li>こんどう</li>
+                <li>HP：52</li>
+                <li>MP：20</li>
+                <li>LV：8</li>
             </ul>
         </div>
-    </section>
-    <section class="message">
-        <div class="message__window">
-            <ul>
-                <li>スライムがあらわれた！</li>
-            </ul>
+        <div class="enemyWindow">
+            <img src="img/enemy_01.gif">
         </div>
-    </section>
+        <div class="footer">
+            <div class="commandWindow">
+                <ul>
+                    <li><p>たたかう</p></li>
+                    <li><p>まほう</p></li>
+                    <li><p>ぼうぎょ</p></li>
+                    <li><p><a href="home">にげる</a></p></li>
+                </ul>
+            </div>
+            <div class="messageWindow">
+                <p>スライムがあらわれた！</p>
+                <p>スライムの攻撃</p>
+                <p>こんどうに2のダメージ</p>
+            </div>
+        </div>
+</section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript" src="js/fadeInOut.js"></script>
 </body>

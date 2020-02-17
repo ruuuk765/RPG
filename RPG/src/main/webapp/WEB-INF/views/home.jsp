@@ -5,62 +5,86 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>勇者の冒険</title>
-    <link rel="stylesheet" type="text/css" href="css/home.css">
-</head>
-<body class="body">
-    <section class="hpmp">
-        <div class="hpmp__window">
-            <p>HP：</p>52<p style="margin-left: 3vw;">MP：</p>20
-        </div>
-    </section>
-    <section class="icon">
-        <img src="img/axe.png" width="130px" height="160px" class="weapon">
-        <img src="img/person.png" width="200px" height="200px">
-    </section>
-    <section class="status">
-        <div class="status__window">
+    <link rel="stylesheet" type="text/css" href="css/home.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700&amp;subset=japanese"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="body">
+    <section>
+      <ul>
+        <li>
+          <div class="hpmpWindow">
             <ul>
-                <li>なまえ</li>
-                <li>しょくぎょう</li>
-                <li>LV</li>
-                <li>さいだいHP</li>
-                <li>さいだいMP</li>
-                <li>ちから</li>
-                <li>ぼうぎょ</li>
-                <li>すばやさ</li>
-                <li>おかね</li>
-                <li>つぎのLVまで</li>
+              <li>
+                <p>HP：${fn:escapeXml(user.hp)}</p>
+              </li>
+              <li>
+                <p>MP：${fn:escapeXml(user.mp)}</p>
+              </li>
             </ul>
-            <ul style="margin-left: 4.5vw;">
-                <li>ロト</li>
-                <li>せんし</li>
-                <li>8</li>
-                <li>80</li>
-                <li>30</li>
-                <li>26</li>
-                <li>18</li>
-                <li>19</li>
-                <li>600G</li>
-                <li>1300XP</li>
+          </div>
+          <div class="iconWindow">
+            <img
+            src="img/weapon_01.png"
+                  width="130px"
+                  height="160px"
+                  class="weapon"
+                  />
+                  <img src="img/person.png" width="200px" height="200px" />
+                </div>
+                <div class="menuWindow">
+                  <div class="message">
+                    <p>セーブしました</p>
+                  </div>
+                  <ul>
+                    <li><a href="battle">せんとう</a></li>
+                    <li>ボス</li>
+                  <li>やすむ</li>
+                  <li><a href="changeRole">てんしょく</a></li>
+                  <li><a href="#" class="save">セーブ</a></li>
+                    <li>へんしゅう</li>
+                    <li><a href="index">おわる</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div class="statusWindow">
+                  <ul>
+                    <li><p>なまえ</p></li>
+                    <li><p>しょくぎょう</p></li>
+                    <li><p>LV</p></li>
+                    <li><p>さいだいHP</p></li>
+                    <li><p>さいだいMP</p></li>
+                    <li><p>ちから</p></li>
+                    <li><p>かしこさ</p></li>
+                    <li><p>ぼうぎょ</p></li>
+                    <li><p>すばやさ</p></li>
+                    <li><p>おかね</p></li>
+                    <li><p>つぎのLVまで</p></li>
+                  </ul>
+                  <ul>
+                    <li><p>${fn:escapeXml(user.name)}</p></li>
+                    <li><p>せんし</p></li>
+                    <li><p>${fn:escapeXml(user.lv)}</p></li>
+                    <li><p>${fn:escapeXml(user.maxHp)}</p></li>
+                    <li><p>${fn:escapeXml(user.maxMp)}</p></li>
+                    <li><p>${fn:escapeXml(user.power)}</p></li>
+                    <li><p>${fn:escapeXml(user.intelligence)}</p></li>
+                    <li><p>${fn:escapeXml(user.defense)}</p></li>
+                    <li><p>${fn:escapeXml(user.speed)}</p></li>
+                    <li><p>${fn:escapeXml(user.gold)}</p></li>
+                    <li><p>${fn:escapeXml(user.xp)}</p></li>
+                  </ul>
+                </div>
+              </li>
             </ul>
-        </div>
-    </section>
-    <section class="menu">
-        <div class="menu_window">
-            <ul>
-                <li><a href="battle">せんとう</a></li>
-                <li>ボス</li>
-                <li>やすむ</li>
-                <li><a href="changeRole">てんしょく</a></li>
-                <li>セーブ</li>
-                <li><a href="index">おわる</a></li>
-            </ul>
-        </div>
-    </section>
+          </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript" src="js/fadeInOut.js"></script>
-</body>
+  </body>
 </html>

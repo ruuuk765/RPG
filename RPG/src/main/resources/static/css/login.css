@@ -71,13 +71,13 @@ input:focus{
 }
 
 .return, .confirm{
-    width: 90px;
-    height: 100px;
+    width: 81px;
+    height: 88.1px;
     position: absolute;
-    top: 350px;
+    top: 110%;
 }
 .confirm{
-    left: 410px;
+    left: 420px;
 }
 .return img, .confirm img{
     display: block;
@@ -86,7 +86,6 @@ input:focus{
 
 .return a{
     display:block;
-    height: 91.6px;
 }
 
 .return P{
@@ -95,4 +94,28 @@ input:focus{
 .confirm p{
     display: block;
     padding-top: .5px;
+}
+
+.errorMsg p{
+    font-size: 15px;
+    color: rgb(179,54,67);
+    line-height: 10px;
+}
+.errorMsg{
+    text-align: center;
+    width: 60%;
+    margin-left: auto;
+    margin-top: 5px;
+}
+
+body > .errorMsg p{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateY(-20%);
+    transform: translateX(-50%);
+}
+
+body > .errorMsg{
+    margin-top: 0;
 }

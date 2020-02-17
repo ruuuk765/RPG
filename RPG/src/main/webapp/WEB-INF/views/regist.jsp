@@ -13,39 +13,39 @@
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700&amp;subset=japanese" rel="stylesheet">
 </head>
 <body class="body">
-<!--     <div class="errorMsg"> -->
-<!--         <p>※そのIDはしようされています</p> -->
-<!--     </div> -->
+    <div class="errorMsg">
+        <p>※そのIDはしようされています</p>
+    </div>
     <section>
-        <form:form action="confirm" modelAttribute="test">
+        <form action="test" id="regist" method="post">
             <ul class="user__info">
                 <li>
                     <p>ID</p>
                     <div class="errorMsg">
-                        <p><form:errors path="userId"/></p>
+                        <p>※入力してください</p>
                     </div>
-                    <form:input path="userId"/>
+                    <input type="text" name="" id="">
                 </li>
                 <li>
                     <p>あんごう</p>
                     <div class="errorMsg">
-                        <p><form:errors path="password"/></p>
+                        <p>※入力してください</p>
                     </div>
-                    <form:password path="password"/>
+                    <input type="text" name="" id="">
                 </li>
                 <li>
                     <p>あんごう(かくにん)</p>
                     <div class="errorMsg">
-                        <p><form:errors path="passwordCheck"/></p>
+                        <p>※入力してください</p>
                     </div>
-                    <form:password path="passwordCheck"/>
+                    <input type="text" name="" id="">
                 </li>
                 <li>
                     <p>なまえ</p>
                     <div class="errorMsg">
-                        <p><form:errors path="name"/></p>
+                        <p>※入力してください</p>
                     </div>
-                    <form:input path="name"/>
+                    <input type="text" name="" id="">
                 </li>
             </ul>
             <ul class="role">
@@ -54,17 +54,18 @@
                     <label>
                         <input type="radio" name="role" id="role" value="1" checked>
                         <p>せんし</p>
-                        <img src="img/axe.png" width="72px" height="72px">
+                        <img src="img/weapon_01.png" width="72px" height="72px">
                      </label>
                 </li>
                 <li>
                     <label>
                         <input type="radio" name="role" id="role" value="2">
                         <p>まほうつかい</p>
-                        <img src="img/cane.png" width="72px" height="72px" class="cane">
+                        <img src="img/weapon_02.png" width="72px" height="72px" class="cane">
                     </label>
                 </li>
             </ul>
+        </form>
         <div class="return">
             <a href="index">
                 <img src="img/return.png" alt="#" width="50px" height="50px">
@@ -72,12 +73,11 @@
             </a>
         </div>
         <div class="confirm">
-            <button type="submit" id="login">
+            <button type="submit" form="regist">
                 <img src="img/confirm.png" alt="#" width="50px" height="50px">
                 <p>きまり</p>
             </button>
         </div>
-        </form:form>
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript" src="js/fadeInOut.js"></script>
