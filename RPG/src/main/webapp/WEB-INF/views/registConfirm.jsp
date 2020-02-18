@@ -31,13 +31,13 @@
             </ul>
             <ul class="userInfo">
                 <li>
-                    <p>Kondo</p>
+                    <p>${fn:escapeXml(user.userId)}</p>
                 </li>
                 <li>
-                    <p>こんどう</p>
+                    <p>${fn:escapeXml(user.name)}</p>
                 </li>
                 <li class="role">
-                    <p>せんし</p>
+                    <p>${fn:escapeXml(user.)}</p>
                     <img src="img/weapon_01.png" width="72px" height="72px">
                 </li>
             </ul>
