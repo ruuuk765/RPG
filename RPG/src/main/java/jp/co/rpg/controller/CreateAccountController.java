@@ -42,9 +42,15 @@ public class CreateAccountController {
 	public String confirm(@Validated @ModelAttribute("test") CreateAccountForm form,
 	BindingResult bindingResult, Model model) {
 
-		if (bindingResult.hasErrors()) {
-			return "regist";
-		}
+//		if (bindingResult.hasErrors()) {
+//			return "regist";
+//		}
+
+		System.out.println(form.getUserId());
+		System.out.println(form.getPassword());
+		System.out.println(form.getPasswordCheck());
+		System.out.println(form.getName());
+		System.out.println(form.getRoleId());
 
 //		IDの重複check
 		if(service.idCheck(form.getUserId())) {
@@ -53,12 +59,10 @@ public class CreateAccountController {
 		}
 
 //		passwordの確認
-		if((form.getPassword()).equals(form.getPasswordCheck())) {
+		if(!((form.getPassword()).equals(form.getPasswordCheck()))) {
 			model.addAttribute("msg", "あんごうとあんごうかくにんがいっちしません");
 			return "regist";
 		}
-
-		System.out.println("通りました");
 
 //		セッションにUer型の情報を保存
 		User user = new User();

@@ -31,14 +31,14 @@
                     <div class="errorMsg">
                         <p><form:errors path="password" /></p>
                     </div>
-                    <form:password path="password"/>
+                    <form:input path="password"/>
                 </li>
                 <li>
                     <p>あんごう(かくにん)</p>
                     <div class="errorMsg">
                         <p><form:errors path="passwordCheck" /></p>
                     </div>
-                    <form:password path="passwordCheck" />
+                    <form:input path="passwordCheck" />
                 </li>
                 <li>
                     <p>なまえ</p>
@@ -52,14 +52,14 @@
                 <p>しょくぎょう</p>
                 <li>
                     <label>
-                        <input type="radio" name="role" id="role" value="1" checked>
+                        <form:radiobutton path="roleId" value="1" checked="checked" />
                         <p>せんし</p>
                         <img src="img/weapon_01.png" width="72px" height="72px">
                      </label>
                 </li>
                 <li>
                     <label>
-                        <input type="radio" name="role" id="role" value="2">
+                        <form:radiobutton path="roleId" value="2" />
                         <p>まほうつかい</p>
                         <img src="img/weapon_02.png" width="72px" height="72px" class="cane">
                     </label>

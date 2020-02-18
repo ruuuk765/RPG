@@ -37,8 +37,8 @@
                     <p>${fn:escapeXml(user.name)}</p>
                 </li>
                 <li class="role">
-                    <p>${fn:escapeXml(role.name)}</p>
-                    <img src="img/weapon_0${fn:escapeXml(role.id)}.png" width="72px" height="72px">
+                    <p>${fn:escapeXml(user.role.name)}</p>
+                    <img src="img/weapon_0${fn:escapeXml(user.role.id)}.png" width="72px" height="72px">
                 </li>
             </ul>
         </form>
