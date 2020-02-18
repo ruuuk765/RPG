@@ -66,10 +66,16 @@ public class CreateAccountController {
 
 //		セッションにUer型の情報を保存
 		User user = new User();
+
+
+
 		user.setUserId(form.getUserId());
 		user.setPassword(form.getPassword());
 		user.setName(form.getName());
 		user.setRoleId(form.getRoleId());
+		user.setRoleName();
+
+
 		session.setAttribute("user", user);
 		return "registConfirm";
 	}

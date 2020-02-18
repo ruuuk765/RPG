@@ -8,4 +8,8 @@ public interface RoleDao {
 
 	public List<Role> getAll();
 
+	List<Role> find();
+
+	List<Role> find(Role role);
+
 }
