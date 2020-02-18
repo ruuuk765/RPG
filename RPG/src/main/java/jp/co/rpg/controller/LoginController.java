@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.rpg.controller.form.LoginForm;
+import jp.co.rpg.dao.RoleDao;
 import jp.co.rpg.dao.UserDao;
+import jp.co.rpg.entity.Role;
 import jp.co.rpg.entity.User;
 
 @Controller
@@ -23,7 +25,8 @@ public class LoginController {
 	HttpSession session;
 	@Autowired
 	private UserDao userDao;
-
+	@Autowired
+	private RoleDao roleDao;
 	//スタート→ログイン
 	@RequestMapping("/login")
 	public String login(@ModelAttribute("login") LoginForm form, Model model) {
@@ -39,12 +42,22 @@ public class LoginController {
 			return "login";
 
 		User user = new User(form.getUserId(), form.getPassword());
-		List<User> res = userDao.find(user);
+		List<User> userRes = userDao.find(user);
 
 		//レコード数1の時、ログインOK
-		if(res.size() == 1) {
-			user = res.get(0);
+		if(userRes.size() == 1) {
+			user = userRes.get(0);
 			session.setAttribute("user", user);
+
+			//ロールを全件取得して保存
+			List<Role> roleList = roleDao.getAll();
+			System.out.println(roleList);
+			session.setAttribute("roleList", roleList);
+
+			//ユーザーのroleIdのものを保存
+			Role role = roleList.get(user.getRole().getId()-1);
+			session.setAttribute("role", role);
+
 			return "home";
 		}else {
 			//1以外はエラー
