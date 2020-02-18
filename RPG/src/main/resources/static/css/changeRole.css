@@ -13,7 +13,7 @@ h1{
     margin: 25vh auto 5vh;
     width: 405px;
     letter-spacing: 2px;
-    
+
     font-size: 25px;
     font-weight: bold;
 }
@@ -41,6 +41,9 @@ label{
 }
 .confirm{
     left: 410px;
+}
+.confirm p {
+	font-size: 23px;
 }
 .disabled{
     color: #a3a3a3;
