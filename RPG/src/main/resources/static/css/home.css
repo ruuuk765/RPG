@@ -34,7 +34,7 @@ section > ul > li:nth-child(2){
 }
 .hpmpWindow {
     margin: 0 auto;
-    width: 25%;
+    width: 30%;
     height: 3%;
 }
 .hpmpWindow ul{
@@ -83,7 +83,7 @@ section > ul > li:nth-child(2){
 .statusWindow ul:last-child p{
     margin-left: auto;
     text-align: right;
-    left: 40%;
+    left: 30%;
 }
 .statusWindow li{
     height: calc(100% / 11);

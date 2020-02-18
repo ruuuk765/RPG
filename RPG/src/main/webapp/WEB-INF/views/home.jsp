@@ -30,7 +30,7 @@
           </div>
           <div class="iconWindow">
             <img
-            src="img/weapon_01.png"
+            src="img/weapon_0${fn:escapeXml(role.id)}.png"
                   width="130px"
                   height="160px"
                   class="weapon"
@@ -47,7 +47,7 @@
                   <li><a href="rest">やすむ</li>
                   <li><a href="changeRole">てんしょく</a></li>
                   <li><a href="#" class="save">セーブ</a></li>
-                    <li>へんしゅう</li>
+                    <li><a href="edit">へんしゅう</a></li>
                     <li><a href="logout">おわる</a></li>
                   </ul>
                 </div>
@@ -69,7 +69,7 @@
                   </ul>
                   <ul>
                     <li><p>${fn:escapeXml(user.name)}</p></li>
-                    <li><p>せんし</p></li>
+                    <li><p>${fn:escapeXml(role.name)}</p></li>
                     <li><p>${fn:escapeXml(user.lv)}</p></li>
                     <li><p>${fn:escapeXml(user.maxHp)}</p></li>
                     <li><p>${fn:escapeXml(user.maxMp)}</p></li>

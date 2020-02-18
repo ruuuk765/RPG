@@ -29,12 +29,25 @@
 	                    <img src="img/weapon_02.png" width="72px" height="75px" class="cane">
 	                </label>
 	            </li>
-	            <li class="disabled">
-	                <input type="radio" name="role" id="role" value="0" disabled>
-	                <label class="disabled">ゆうしゃ</label>
-	                <img src="img/weapon_03.png" width="72px" height="75px" class="sord">
-	                <p style="margin:2vh 0 0 0.3vw;">※ LV5以上</p>
-	            </li>
+	            <c:choose>
+	            	<c:when test="${user.lv < 5}">
+			            <li class="disabled">
+			                <input type="radio" name="role" id="role" value="0" disabled>
+			                <label class="disabled">ゆうしゃ</label>
+			                <img src="img/weapon_09.png" width="72px" height="75px" class="sord">
+			                <p style="margin:2vh 0 0 0.3vw;">※ LV5以上</p>
+			            </li>
+		            </c:when>
+		            <c:otherwise>
+					    <li>
+						    <label>
+			                    <input type="radio" name="role" id="role" value="3">
+			                    ゆうしゃ
+			                    <img src="img/weapon_03.png" width="72px" height="75px" class="sord">
+			                </label>
+		                </li>
+				  </c:otherwise>
+	            </c:choose>
 	            <a class="return" href="home" class="link">
 	                <img src="img/return.png" alt="#" width="50px" height="50px">
 	                <p>もどる</p>
