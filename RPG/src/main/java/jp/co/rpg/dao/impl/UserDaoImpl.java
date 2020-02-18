@@ -29,13 +29,12 @@ public class UserDaoImpl implements UserDao {
 			+ "current_date, current_date, "
 			+ ":adminFlg, :clearFlg, :deleteFlg)";
 
-	private static final String SQL_UPDATE = "UPDATE users SET"
-			+ "(SELECT MAX(id) + 1 FROM users), "
+	private static final String SQL_UPDATE = "UPDATE users SET "
 			+ "password = :password, name = :name, role_id = :role_id, "
 			+ "lv = :lv, max_hp = :max_hp, hp = :hp, max_mp = :max_mp, mp = :mp,"
 			+ "power = :power, intelligence = :intelligence, defense = :defense, speed = :speed, "
 			+ "xp = :xp, gold = :gold, "
-			+ "since_days = :since_days, update_data = update_data, "
+			+ "since_days = :since_days, update_date = current_date "
 			+ "WHERE user_id = :user_id";
 
 	@Override
@@ -87,8 +86,12 @@ public class UserDaoImpl implements UserDao {
 		param.addValue("mp", user.getMp());
 		param.addValue("power", user.getPower());
 		param.addValue("intelligence", user.getIntelligence());
-		param.addValue("hp", user.getHp());
-		param.addValue("hp", user.getHp());
+		param.addValue("defense", user.getDefense());
+		param.addValue("speed", user.getSpeed());
+		param.addValue("xp", user.getXp());
+		param.addValue("gold", user.getGold());
+		param.addValue("since_days", user.getSinceDays());
+		param.addValue("user_id", user.getUserId());
 
 		jdbcTemplate.update(SQL_UPDATE, param);
 

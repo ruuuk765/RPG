@@ -18,6 +18,8 @@ public class SaveController {
 
 	@RequestMapping("/save")
 	public void index() {
-		User user = (User) session.getAttribute("User");
+
+		User user = (User) session.getAttribute("user");
+		userDao.update(user);
 	}
 }
