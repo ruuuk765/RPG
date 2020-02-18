@@ -27,6 +27,10 @@ public class RestController {
 
 		Boolean result = service.rest(user);
 
+		if(result) {
+			return "rest";
+		}
 		return "home";
+
 	}
 }
