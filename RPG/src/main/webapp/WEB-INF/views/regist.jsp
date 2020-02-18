@@ -17,7 +17,7 @@
         <p>${fn:escapeXml(msg)}</p>
     </div>
     <section>
-        <form:form action="test" id="regist" method="post">
+        <form:form action="confirm" method="post" id="regist" modelAttribute="test">
             <ul class="user__info">
                 <li>
                     <p>ID</p>
@@ -31,21 +31,21 @@
                     <div class="errorMsg">
                         <p><form:errors path="password" /></p>
                     </div>
-                    <form:input path="password"/>
+                    <form:password path="password"/>
                 </li>
                 <li>
                     <p>あんごう(かくにん)</p>
                     <div class="errorMsg">
                         <p><form:errors path="passwordCheck" /></p>
                     </div>
-                    <input path="passwordCheck" />
+                    <form:password path="passwordCheck" />
                 </li>
                 <li>
                     <p>なまえ</p>
                     <div class="errorMsg">
                         <p><form:errors path="name" /></p>
                     </div>
-                    <input path="name" />
+                    <form:input path="name" />
                 </li>
             </ul>
             <ul class="role">

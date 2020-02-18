@@ -34,7 +34,6 @@ public class CreateAccountController {
 //	idex.jsp - regist.jsp
 	@RequestMapping("/regist")
 	public String createAccountPage(@ModelAttribute("test") CreateAccountForm form, Model model) {
-		model.addAttribute("list", service.getAll());
 		return "regist";
 	}
 
@@ -44,7 +43,7 @@ public class CreateAccountController {
 	BindingResult bindingResult, Model model) {
 
 		if (bindingResult.hasErrors()) {
-		 return "regist";
+			return "regist";
 		}
 
 //		IDの重複check
@@ -58,6 +57,8 @@ public class CreateAccountController {
 			model.addAttribute("msg", "あんごうとあんごうかくにんがいっちしません");
 			return "regist";
 		}
+
+		System.out.println("通りました");
 
 //		セッションにUer型の情報を保存
 		User user = new User();
