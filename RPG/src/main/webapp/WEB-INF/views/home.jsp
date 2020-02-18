@@ -30,7 +30,7 @@
           </div>
           <div class="iconWindow">
             <img
-            src="img/weapon_01.png"
+            src="img/weapon_0${fn:escapeXml(role.id)}.png"
                   width="130px"
                   height="160px"
                   class="weapon"
