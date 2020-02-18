@@ -51,7 +51,6 @@ public class LoginController {
 
 			//ロールを全件取得して保存
 			List<Role> roleList = roleDao.getAll();
-			System.out.println(roleList);
 			session.setAttribute("roleList", roleList);
 
 			//ユーザーのroleIdのものを保存

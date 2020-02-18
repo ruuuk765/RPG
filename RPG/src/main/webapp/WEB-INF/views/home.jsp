@@ -69,7 +69,7 @@
                   </ul>
                   <ul>
                     <li><p>${fn:escapeXml(user.name)}</p></li>
-                    <li><p>せんし</p></li>
+                    <li><p>${fn:escapeXml(role.name)}</p></li>
                     <li><p>${fn:escapeXml(user.lv)}</p></li>
                     <li><p>${fn:escapeXml(user.maxHp)}</p></li>
                     <li><p>${fn:escapeXml(user.maxMp)}</p></li>
