@@ -47,7 +47,7 @@
                   <li><a href="rest">やすむ</li>
                   <li><a href="changeRole">てんしょく</a></li>
                   <li><a href="#" class="save">セーブ</a></li>
-                    <li>へんしゅう</li>
+                    <li><a href="edit">へんしゅう</a></li>
                     <li><a href="logout">おわる</a></li>
                   </ul>
                 </div>
