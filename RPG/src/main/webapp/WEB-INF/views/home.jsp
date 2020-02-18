@@ -44,11 +44,11 @@
                   <ul>
                     <li><a href="battle">せんとう</a></li>
                     <li>ボス</li>
-                  <li>やすむ</li>
+                  <li><a href="rest">やすむ</li>
                   <li><a href="changeRole">てんしょく</a></li>
                   <li><a href="#" class="save">セーブ</a></li>
                     <li>へんしゅう</li>
-                    <li><a href="index">おわる</a></li>
+                    <li><a href="logout">おわる</a></li>
                   </ul>
                 </div>
               </li>
