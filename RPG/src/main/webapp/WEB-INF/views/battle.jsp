@@ -30,8 +30,8 @@
         <div class="footer">
             <div class="commandWindow">
                 <ul>
-                    <li><p>たたかう</p></li>
-                    <li><p>まほう</p></li>
+                    <li><p class="attack">たたかう</p></li>
+                    <li><p class="magic">まほう</p></li>
                     <li><p class="defense">ぼうぎょ</p></li>
                     <li><p><a href="home">にげる</a></p></li>
                 </ul>

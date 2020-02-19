@@ -6,6 +6,8 @@ import java.util.List;
 public class BattleInfo {
 	private List<String> context = new ArrayList<String>();
 	private boolean isContinue = false;
+	private Integer hp;
+	private Integer mp;
 
 	public List<String> getContext() {
 		return context;
@@ -21,5 +23,13 @@ public class BattleInfo {
 
 	public void setIsContinue(boolean bool) {
 		this.isContinue = bool;
+	}
+
+	public void setHp(Integer hp) {
+		this.hp = hp;
+	}
+
+	public void setMp(Integer mp) {
+		this.mp = mp;
 	}
 }
