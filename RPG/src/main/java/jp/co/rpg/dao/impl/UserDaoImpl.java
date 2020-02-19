@@ -1,6 +1,5 @@
 package jp.co.rpg.dao.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,27 +49,24 @@ public class UserDaoImpl implements UserDao {
 	public List<User> find(User user) {
 		String SQL_SELECT_FIND = "";
 		StringBuilder forSearch = new StringBuilder("SELECT * FROM users where 1 = 1");
+		MapSqlParameterSource param = new MapSqlParameterSource();
 
 		if(!(Util.isNullOrEmpty(user.getUserId()))) {
 			forSearch.append(" AND user_id = :userId");
+			param.addValue("userId", user.getUserId());
 		}
 		if(!(Util.isNullOrEmpty(user.getPassword()))) {
 			forSearch.append(" AND password = :password");
+			param.addValue("password", user.getPassword());
 		}
 
 		SQL_SELECT_FIND = forSearch.toString();
 
-		MapSqlParameterSource param = new MapSqlParameterSource();
-		param.addValue("userId", user.getUserId());
-		param.addValue("password", user.getPassword());
 
-		List<User> list = new ArrayList<User>();
-		list = jdbcTemplate.query(
-			SQL_SELECT_FIND,
-			param,
-			new BeanPropertyRowMapper<User>(User.class));
-
-		return list;
+		return	jdbcTemplate.query(
+				SQL_SELECT_FIND,
+				param,
+				new BeanPropertyRowMapper<User>(User.class));
 	}
 
 	@Override

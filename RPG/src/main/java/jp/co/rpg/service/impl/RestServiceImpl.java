@@ -8,7 +8,7 @@ import jp.co.rpg.service.RestService;
 @Service
 public class RestServiceImpl implements RestService {
 
-	private final Integer isRestPrice = 500;
+	private final Integer isRestPrice = 50;
 
 	@Override
 	public Boolean rest(User user) {
