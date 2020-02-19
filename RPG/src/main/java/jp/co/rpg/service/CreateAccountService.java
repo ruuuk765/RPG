@@ -31,11 +31,14 @@ public interface CreateAccountService {
 
 
 //	 UserDaoを使って新しいアカウントを作成
-	public void createAccount(User user);
+	public User createAccount(User user);
 
 
 //	Role全レコード取得
 	public List<Role> getAll();
+
+
+	String isRoleName(User user);
 
 
 

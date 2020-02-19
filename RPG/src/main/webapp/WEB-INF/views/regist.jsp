@@ -31,14 +31,14 @@
                     <div class="errorMsg">
                         <p><form:errors path="password" /></p>
                     </div>
-                    <form:input path="password"/>
+                    <form:password path="password"/>
                 </li>
                 <li>
                     <p>あんごう(かくにん)</p>
                     <div class="errorMsg">
                         <p><form:errors path="passwordCheck" /></p>
                     </div>
-                    <form:input path="passwordCheck" />
+                    <form:password path="passwordCheck" />
                 </li>
                 <li>
                     <p>なまえ</p>

@@ -42,15 +42,9 @@ public class CreateAccountController {
 	public String confirm(@Validated @ModelAttribute("test") CreateAccountForm form,
 	BindingResult bindingResult, Model model) {
 
-//		if (bindingResult.hasErrors()) {
-//			return "regist";
-//		}
-
-		System.out.println(form.getUserId());
-		System.out.println(form.getPassword());
-		System.out.println(form.getPasswordCheck());
-		System.out.println(form.getName());
-		System.out.println(form.getRoleId());
+		if (bindingResult.hasErrors()) {
+			return "regist";
+		}
 
 //		IDの重複check
 		if(service.idCheck(form.getUserId())) {
@@ -73,7 +67,7 @@ public class CreateAccountController {
 		user.setPassword(form.getPassword());
 		user.setName(form.getName());
 		user.setRoleId(form.getRoleId());
-		user.setRoleName();
+		user.setRoleName(service.isRoleName(user));
 
 
 		session.setAttribute("user", user);
@@ -81,19 +75,18 @@ public class CreateAccountController {
 	}
 
 //	confirm.jsp - home.jsp
-	@RequestMapping(value="/createAccount", method=RequestMethod.POST)
-	public String createAccount(@Validated @ModelAttribute("test") CreateAccountForm form,
-	BindingResult bindingResult, Model model) {
-
-		if (bindingResult.hasErrors()) {
-		 model.addAttribute("msg", "入力に誤りがあります");
-		 return "createAccountPage";
-		}
+	@RequestMapping("/createAccount")
+	public String createAccount() {
 
 //		CreateAccountServiceを使って登録
 		User user = new User();
 		user = (User)session.getAttribute("user");
-		service.createAccount(user);
+		user = service.createAccount(user);
+
+		session.invalidate();
+		session.setAttribute("user", user);
+		session.setAttribute("role", user.getRole());
+		session.setAttribute("roleList", service.getAll());
 
 		return "home";
 	}

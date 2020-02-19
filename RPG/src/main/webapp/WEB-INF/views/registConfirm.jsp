@@ -53,7 +53,7 @@
                 <img src="img/confirm.png" alt="#" width="50px" height="50px">
                 <p>きまり</p>
             </button> -->
-            <a href="home">
+            <a href="createAccount">
                 <img src="img/confirm.png" alt="#" width="50px" height="50px">
                 <p>きまり</p>
             </a>

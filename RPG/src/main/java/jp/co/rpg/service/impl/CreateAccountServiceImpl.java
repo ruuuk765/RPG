@@ -1,5 +1,6 @@
 package jp.co.rpg.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class CreateAccountServiceImpl implements CreateAccountService {
 	}
 
 	@Override
-	public void createAccount(User user) {
+	public User createAccount(User user) {
 //		entityUserに初期値フィールドをセット
 		user.setLv(lv);
 		user.setMaxHp(maxHp);
@@ -49,11 +50,22 @@ public class CreateAccountServiceImpl implements CreateAccountService {
 		user.setDeleteFlg(deleteFlg);
 		userDao.createAccount(user);
 
+		return user;
+
 	}
 
 	@Override
 	public List<Role> getAll() {
 		return roleDao.getAll();
+	}
+
+	@Override
+	public String isRoleName(User user) {
+
+		List<Role> list = new ArrayList<Role>();
+		list = roleDao.find(user.getRole());
+
+		return (list.get(0)).getName();
 	}
 
 }

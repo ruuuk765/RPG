@@ -21,13 +21,13 @@ public class UserDaoImpl implements UserDao {
 	@Autowired
 	private NamedParameterJdbcTemplate jdbcTemplate;
 
-	String SQL_CREATE_ACCOUNT = "INSERT INTO users VALUE ("
+	private static final String SQL_CREATE_ACCOUNT = "INSERT INTO users VALUES ("
 			+ "(SELECT MAX(id) + 1 FROM users), "
-			+ ":userId, :password, :name, :roleId, "
-			+ ":lv, :maxHp, :hp, :maxMp, :mp, :power, :intelligence, :defense, :speed, "
-			+ ":xp, :gold, :sinceDays, "
+			+ ":user_id, :password, :name, :role_id, "
+			+ ":lv, :max_hp, :hp, :max_mp, :mp, :power, :intelligence, :defense, :speed, "
+			+ ":xp, :gold, :since_days, "
 			+ "current_date, current_date, "
-			+ ":adminFlg, :clearFlg, :deleteFlg)";
+			+ ":admin_flg, :clear_flg, :delete_flg)";
 
 	private static final String SQL_UPDATE = "UPDATE users SET "
 			+ "password = :password, name = :name, role_id = :role_id, "
@@ -40,7 +40,25 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public void createAccount(User user) {
 		MapSqlParameterSource param = new MapSqlParameterSource();
-		param.addValue("userId", user.getUserId());
+		param.addValue("user_id", user.getUserId());
+		param.addValue("password", user.getPassword());
+		param.addValue("name", user.getName());
+		param.addValue("role_id", user.getRole().getId());
+		param.addValue("lv", user.getLv());
+		param.addValue("max_hp", user.getMaxHp());
+		param.addValue("hp", user.getHp());
+		param.addValue("max_mp", user.getMaxMp());
+		param.addValue("mp", user.getMp());
+		param.addValue("power", user.getPower());
+		param.addValue("intelligence", user.getIntelligence());
+		param.addValue("defense", user.getDefense());
+		param.addValue("speed", user.getSpeed());
+		param.addValue("xp", user.getXp());
+		param.addValue("gold", user.getGold());
+		param.addValue("since_days", user.getSinceDays());
+		param.addValue("admin_flg", user.getAdminFlg());
+		param.addValue("clear_flg", user.getClearFlg());
+		param.addValue("delete_flg", user.getDeleteFlg());
 
 		jdbcTemplate.update(SQL_CREATE_ACCOUNT, param);
 

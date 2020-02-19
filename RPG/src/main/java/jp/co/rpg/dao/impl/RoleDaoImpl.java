@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import jp.co.rpg.dao.RoleDao;
@@ -17,7 +17,7 @@ import jp.co.rpg.util.Util;
 public class RoleDaoImpl implements RoleDao {
 
 	@Autowired
-	private JdbcTemplate jdbcTemplate;
+	private NamedParameterJdbcTemplate jdbcTemplate;
 
 	@Override
 	public List<Role> getAll() {
@@ -39,14 +39,11 @@ public class RoleDaoImpl implements RoleDao {
 		SQL_SELECT_FIND = forSearch.toString();
 
 		MapSqlParameterSource param = new MapSqlParameterSource();
-		param.addValue("Id", role.getId());
+		param.addValue("id", role.getId());
 		param.addValue("password", role.getName());
 
 		List<Role> list = new ArrayList<Role>();
-		list = jdbcTemplate.query(
-			SQL_SELECT_FIND,
-			param,
-			new BeanPropertyRowMapper<Role>(Role.class));
+		list = jdbcTemplate.query(SQL_SELECT_FIND, param, new BeanPropertyRowMapper<Role>(Role.class));
 
 		return list;
 	}
