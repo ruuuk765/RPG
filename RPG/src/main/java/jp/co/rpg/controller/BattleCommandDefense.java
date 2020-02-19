@@ -14,7 +14,7 @@ import jp.co.rpg.entity.User;
 
 @RestController
 @ResponseBody
-public class BattleCommandController{
+public class BattleCommandDefense{
 	@Autowired
 	HttpSession session;
 	@Autowired
