@@ -43,7 +43,7 @@
                 <li>
                     <p>なまえ</p>
                     <div class="errorMsg">
-                        <p><form:errors path="name" /></p>
+                        <p><form:errors path="name" maxlength="5"/></p>
                     </div>
                     <form:input path="name" />
                 </li>
