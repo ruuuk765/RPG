@@ -7,12 +7,13 @@ public class CreateAccountForm {
 
 	// フィールド
 	@NotBlank(message="※入力してください")
+	@Pattern(regexp = "^[a-zA-Z0-9]*$",message="※半角英数字のみです"
 	private String userId;
-	@NotNull(message="※入力してください")
+	@NotBlank(message="※入力してください")
 	private String password;
-	@NotNull(message="※入力してください")
+	@NotBlank(message="※入力してください")
 	private String passwordCheck;
-	@NotNull(message="※入力してください")
+	@NotBlank(message="※入力してください")
 	private String name;
 	@NotNull(message="※入力してください")
 	private Integer roleId;

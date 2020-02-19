@@ -1,3 +1,19 @@
+//こうげき
+$(function(){
+    $('.attack').on('click',function(){
+        $.ajax({
+            url:'./attack',
+            type:'POST',
+            dataType:"json",
+            success: function(bi){
+            	console.log(bi);
+            }
+        })
+    });
+});
+
+
+
 //ぼうぎょ
 $(function(){
     $('.defense').on('click',function(){
