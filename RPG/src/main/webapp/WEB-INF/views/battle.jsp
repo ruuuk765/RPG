@@ -15,13 +15,13 @@
     />
 </head>
 <body class="body">
-    <section>
+    <section id="section">
         <div class="hpmpWindow">
             <ul>
                 <li>こんどう</li>
-                <li>HP：52</li>
-                <li>MP：20</li>
-                <li>LV：8</li>
+                <li>HP：<div class="userHp">${fn:escapeXml(user.hp)}</div></li>
+                <li>MP：<div class="userMp">${fn:escapeXml(user.mp)}</div></li>
+                <li>LV：<div class="userLv">${fn:escapeXml(user.lv)}</div></li>
             </ul>
         </div>
         <div class="enemyWindow">
@@ -30,7 +30,7 @@
         <div class="footer">
             <div class="commandWindow">
                 <ul>
-          			<li><p class="attack">たたかう</p></li>
+                    <li><p class="attack">たたかう</p></li>
                     <li><p>まほう</p></li>
                     <li><p class="defense">ぼうぎょ</p></li>
                     <li><p><a href="home">にげる</a></p></li>
@@ -41,7 +41,8 @@
             </div>
         </div>
 </section>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.jrumble.1.3.js"></script>
     <script type="text/javascript" src="js/fadeInOut.js"></script>
     <script type="text/javascript" src="js/battle.js"></script>
 </body>
