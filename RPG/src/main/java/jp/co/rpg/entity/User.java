@@ -1,6 +1,6 @@
 package jp.co.rpg.entity;
 
-public class User {
+public class User implements Chara{
 
 	// フィールド
 	private Integer id;
@@ -53,9 +53,11 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	@Override
 	public String getName() {
 		return name;
 	}
+	@Override
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -85,9 +87,11 @@ public class User {
 	public void setMaxHp(Integer maxHp) {
 		this.maxHp = maxHp;
 	}
+	@Override
 	public Integer getHp() {
 		return hp;
 	}
+	@Override
 	public void setHp(Integer hp) {
 		this.hp = hp;
 	}
@@ -97,36 +101,47 @@ public class User {
 	public void setMaxMp(Integer maxMp) {
 		this.maxMp = maxMp;
 	}
+	@Override
 	public Integer getMp() {
 		return mp;
 	}
+	@Override
 	public void setMp(Integer mp) {
 		this.mp = mp;
 	}
+	@Override
 	public Integer getPower() {
 		return power;
 	}
+	@Override
 	public void setPower(Integer power) {
 		this.power = power;
 	}
+	@Override
 	public Integer getIntelligence() {
 		return intelligence;
 	}
+	@Override
 	public void setIntelligence(Integer intelligence) {
 		this.intelligence = intelligence;
 	}
+	@Override
 	public Integer getDefense() {
 		return defense;
 	}
+	@Override
 	public void setDefense(Integer defense) {
 		this.defense = defense;
 	}
+	@Override
 	public Integer getSpeed() {
 		return speed;
 	}
+	@Override
 	public void setSpeed(Integer speed) {
 		this.speed = speed;
 	}
+
 	public Integer getXp() {
 		return xp;
 	}
