@@ -25,7 +25,7 @@
             </ul>
         </div>
         <div class="enemyWindow">
-            <img src="img/enemy_01.gif">
+            <img src="img/enemy_0${fn:escapeXml(enemy.id)}.gif">
         </div>
         <div class="footer">
             <div class="commandWindow">
