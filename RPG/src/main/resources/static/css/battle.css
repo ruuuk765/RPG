@@ -33,11 +33,16 @@ section{
     display: flex;
 }
 .hpmpWindow ul li{
-    width: 25%;
     text-align: center;
+    margin: 0 auto;
 }
 .hpmpWindow ul li:first-child{
-    width: 40%;
+    width: 30%;
+}
+.userHp,
+.userMp,
+.userLv{
+	display: inline;
 }
 .enemyWindow{
     width: 100%;

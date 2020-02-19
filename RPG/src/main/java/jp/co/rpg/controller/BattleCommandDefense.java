@@ -24,14 +24,30 @@ public class BattleCommandDefense{
 	@RequestMapping("/defense")
 	public BattleInfo defense() {
 
-		//ユーザーと敵の情報取得
+		//初期情報取得
 		User user = (User) session.getAttribute("user");
 		Enemy enemy = (Enemy) session.getAttribute("enemy");
-
-
 		BattleInfo bi = new BattleInfo();
-		bi.setContext(user.getName()+"の攻撃");
-		bi.setContext(enemy.getName()+"に"+user.getPower()+"のダメージを与えた");
+		Integer userHp = user.getHp();
+
+		bi.setContext(user.getName() + "はぼうぎょしている");
+		bi.setContext(enemy.getName() + "の攻撃");
+		bi.setContext(user.getName() + "は" + enemy.getPower() / 2 + "のダメージを受けた");
+		userHp -= enemy.getPower() / 2;
+
+		if(userHp > 0) {
+			//バトル継続
+			user.setHp(userHp);
+			bi.setUserHp(userHp);
+		}else {
+			//バトル不能
+			bi.setIsContinue(false);
+			bi.setUserHp(0);
+			user.setHp(1);
+			user.setGold(user.getGold() / 2 );
+		}
+
+		session.setAttribute("user", user);
 
 		return bi;
 	}

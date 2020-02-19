@@ -2,12 +2,13 @@ package jp.co.rpg.controller.form;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 public class CreateAccountForm {
 
 	// フィールド
 	@NotBlank(message="※入力してください")
-	@Pattern(regexp = "^[a-zA-Z0-9]*$",message="※半角英数字のみです"
+	@Pattern(regexp = "^[a-zA-Z0-9]*$",message="※半角英数字のみです")
 	private String userId;
 	@NotBlank(message="※入力してください")
 	private String password;
