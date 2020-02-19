@@ -32,18 +32,17 @@
                 <ul>
                     <li><p>たたかう</p></li>
                     <li><p>まほう</p></li>
-                    <li><p>ぼうぎょ</p></li>
+                    <li><p class="defense">ぼうぎょ</p></li>
                     <li><p><a href="home">にげる</a></p></li>
                 </ul>
             </div>
             <div class="messageWindow">
-                <p>スライムがあらわれた！</p>
-                <p>スライムの攻撃</p>
-                <p>こんどうに2のダメージ</p>
+                <p>${fn:escapeXml(enemy.name)}があらわれた！</p>
             </div>
         </div>
 </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript" src="js/fadeInOut.js"></script>
+    <script type="text/javascript" src="js/battle.js"></script>
 </body>
 </html>

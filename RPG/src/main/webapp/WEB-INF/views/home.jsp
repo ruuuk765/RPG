@@ -93,13 +93,10 @@
                     url:'./save',
                     type:'POST',
                     data:{
-
                     }
                 })
-
             });
         });
-
     </script>
   </body>
 </html>
