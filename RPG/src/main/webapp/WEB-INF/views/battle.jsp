@@ -18,7 +18,7 @@
     <section id="section">
         <div class="hpmpWindow">
             <ul>
-                <li>こんどう</li>
+                <li>${fn:escapeXml(user.name)}</li>
                 <li>HP：<div class="userHp">${fn:escapeXml(user.hp)}</div></li>
                 <li>MP：<div class="userMp">${fn:escapeXml(user.mp)}</div></li>
                 <li>LV：<div class="userLv">${fn:escapeXml(user.lv)}</div></li>
