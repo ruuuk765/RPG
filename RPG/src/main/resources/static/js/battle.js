@@ -50,3 +50,13 @@ $(function(){
         })
     });
 });
+
+
+
+//まほう一覧表示
+$(function(){
+    $('.magicList').on("click",function() {
+      $(".messages").html("");
+      $('.magics').show();
+   });
+});

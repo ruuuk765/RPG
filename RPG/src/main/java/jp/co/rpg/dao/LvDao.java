@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package jp.co.rpg.dao;
 
 import java.util.List;

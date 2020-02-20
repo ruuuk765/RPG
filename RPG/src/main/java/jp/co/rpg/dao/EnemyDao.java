@@ -10,4 +10,6 @@ public interface EnemyDao {
 
 	List<Enemy> findAppear(User user);
 
+	List<Enemy> findBoss();
+
 }
