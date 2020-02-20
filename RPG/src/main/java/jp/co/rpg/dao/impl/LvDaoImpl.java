@@ -10,9 +10,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import jp.co.rpg.dao.LvDao;
 import jp.co.rpg.entity.Lv;
-import jp.co.rpg.entity.Role;
 import jp.co.rpg.entity.User;
-import jp.co.rpg.util.Util;
 
 public class LvDaoImpl implements LvDao {
 
@@ -25,30 +23,16 @@ public class LvDaoImpl implements LvDao {
 	}
 
 	@Override
-	public List<lv> lvCheck (User user) {
+	public List<Lv> lvCheck (User user) {
 
-		user.getXp()
-
-	}
-		String SQL_SELECT_FIND = "";
-		StringBuilder forSearch = new StringBuilder("SELECT * FROM lv where 1 = 1");
-
-		if(!(Util.isNullOrEmpty(role.getId()))) {
-			forSearch.append(" AND id = :id");
-		}
-		if(!(Util.isNullOrEmpty(role.getName()))) {
-			forSearch.append(" AND name = :name");
-		}
-
-		SQL_SELECT_FIND = forSearch.toString();
+		String SQL_LV_CHECK = "SELECT * FROM lv WHERE need_xp < :xp";
 
 		MapSqlParameterSource param = new MapSqlParameterSource();
-		param.addValue("id", role.getId());
-		param.addValue("password", role.getName());
+		param.addValue("xp", user.getXp());
 
-		List<Role> list = new ArrayList<Role>();
-		list = jdbcTemplate.query(SQL_SELECT_FIND, param, new BeanPropertyRowMapper<Role>(Role.class));
+		List<Lv> list = new ArrayList<Lv>();
+		list = jdbcTemplate.query(SQL_LV_CHECK, param, new BeanPropertyRowMapper<Lv>(Lv.class));
 
 		return list;
-
+	}
 }
