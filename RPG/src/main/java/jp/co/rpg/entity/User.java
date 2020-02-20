@@ -1,6 +1,13 @@
 package jp.co.rpg.entity;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import jp.co.rpg.dao.LvDao;
+
 public class User extends Chara{
+
+	@Autowired
+	LvDao lvDao;
 
 	// フィールド
 	private String userId;
@@ -17,6 +24,14 @@ public class User extends Chara{
 	private Integer adminFlg;
 	private Integer clearFlg;
 	private Integer deleteFlg;
+
+//	レベルアップ乱数調整
+	private static final Integer maxHpUpRate = 5;
+	private static final Integer maxMpUpRate = 5;
+	private static final Integer powerUpRate = 5;
+	private static final Integer intelligenceUpRate = 5;
+	private static final Integer defenseUpRate = 5;
+	private static final Integer speedUpRate = 5;
 
 //	コンストラクタ
 	public User() {
@@ -161,8 +176,28 @@ public class User extends Chara{
 				+ enemy.getDropXp() + "xp を獲得した。");
 
 //		レベルアップの確認
+		Integer lvUp = lvDao.lvCheck(xp).getLv();
+		if(lvUp > lv) {
+			Integer maxHpUp = 0;
+			Integer maxMpUp = 0;
+			Integer powerUp = 0;
+			Integer intelligenceUp = 0;
+			Integer defenseUp = 0;
+			Integer speedUp = 0;
+			for(int i = 0; i>(lvUp-lv); i++) {
+				maxHpUp += (int) (Math.random() * 3 + 8) * maxHpUpRate;
+				maxMpUp += (int) (Math.random() * 3 + 8) * maxMpUpRate;
+				powerUp += (int) (Math.random() * 3 + 8) * powerUpRate;
+				intelligenceUp += (int) (Math.random() * 3 + 8) * intelligenceUpRate;
+				defenseUp += (int) (Math.random() * 3 + 8) * defenseUpRate;
+				speedUp += (int) (Math.random() * 3 + 8) * speedUpRate;
+			}
+			lv = lvUp;
+			maxHp += maxHpUp;
+			maxMp += maxMpUp;
+			power +=
+		}
 
 
-		bi.setStatus("win");
 	}
 }
