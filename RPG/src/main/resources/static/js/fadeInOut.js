@@ -32,3 +32,6 @@ $('head').append(
       $(this).delay(800).fadeOut("slow");
     });
   });
+
+ //バトル画面、ボスメッセージフェードアウト
+  $('.arrow_question').delay(3000).fadeOut("slow");

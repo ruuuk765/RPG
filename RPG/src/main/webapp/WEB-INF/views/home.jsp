@@ -42,9 +42,9 @@
                     <p>セーブしました</p>
                   </div>
                   <ul>
-                    <li><a href="battle">せんとう</a></li>
-                    <li>ボス</li>
-                  <li><a href="rest">やすむ</li>
+                    <li><a href="battle?name=usual">せんとう</a></li>
+                    <li><a href="battle?name=boss">ボス</a></li>
+                  <li><a href="rest">やすむ</a></li>
                   <li><a href="changeRole">てんしょく</a></li>
                   <li><a href="#" class="save">セーブ</a></li>
                     <li><a href="edit">へんしゅう</a></li>

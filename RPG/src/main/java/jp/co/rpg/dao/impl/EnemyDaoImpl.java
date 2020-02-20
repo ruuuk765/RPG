@@ -31,4 +31,9 @@ public class EnemyDaoImpl implements EnemyDao {
 				param,
 				new BeanPropertyRowMapper<Enemy>(Enemy.class));
 	}
+
+	@Override
+	public List<Enemy> findBoss() {
+		 return jdbcTemplate.query("SELECT * FROM enemies WHERE id = 999", new BeanPropertyRowMapper<Enemy>(Enemy.class));
+	}
 }
