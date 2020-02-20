@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,7 +20,7 @@ public class BattleCommandAttack{
 
 	//ごうげき
 	@RequestMapping("/attack")
-	public BattleInfo Attack() {
+	public BattleInfo Attack(@RequestParam("magicId")Integer magicId) {
 
 		//ユーザーと敵の情報取得
 		User user = (User) session.getAttribute("user");
@@ -27,12 +28,23 @@ public class BattleCommandAttack{
 
 		BattleInfo bi = new BattleInfo();
 
+		//まほうが選択された場合
+		if(magicId != 0)
+			bi.setIsMagic(true);
+
+		//スピードチェック
 		if(user.getSpeed() >= enemy.getSpeed()) {
+			//ユーザー先攻
 			if(user.battleCalc(bi, enemy)) {
+				bi.setIsMagic(false);
 				enemy.battleCalc(bi, user);
 			}
 		}else {
+			//ユーザー後攻
+			boolean temp = bi.getIsMagic();
+			bi.setIsMagic(false);
 			if(enemy.battleCalc(bi, user)) {
+				bi.setIsMagic(temp);
 				user.battleCalc(bi, enemy);
 			}
 		}
