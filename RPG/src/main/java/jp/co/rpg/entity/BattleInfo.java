@@ -15,7 +15,6 @@ public class BattleInfo {
 	private Integer userMp;
 
 	private User user;
-	private Enemy enemy;
 
 	public List<String> getContext() {
 		return context;
@@ -54,12 +53,22 @@ public class BattleInfo {
 		this.userMp = user.getMp();
 	}
 
-	public Enemy getEnemy() {
-		return enemy;
+	public Integer getUserHp() {
+		return userHp;
 	}
 
-	public void setEnemy(Enemy enemy) {
-		this.enemy = enemy;
+	public void setUserHp(Integer userHp) {
+		this.userHp = userHp;
 	}
+
+	public Integer getUserMp() {
+		return userMp;
+	}
+
+	public void setUserMp(Integer userMp) {
+		this.userMp = userMp;
+	}
+
+
 
 }

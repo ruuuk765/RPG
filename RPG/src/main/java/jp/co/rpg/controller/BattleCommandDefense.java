@@ -41,7 +41,7 @@ public class BattleCommandDefense{
 			bi.setUserHp(userHp);
 		}else {
 			//バトル不能
-			bi.setIsContinue(false);
+			bi.setStatus("lose");
 			bi.setUserHp(0);
 			user.setHp(1);
 			user.setGold(user.getGold() / 2 );
