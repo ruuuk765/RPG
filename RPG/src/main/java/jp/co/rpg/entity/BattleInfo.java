@@ -13,6 +13,7 @@ public class BattleInfo {
 	private String status = CONTINUE;
 	private Integer userHp;
 	private Integer userMp;
+	private boolean isMagic = false;
 
 	private User user;
 
@@ -67,6 +68,14 @@ public class BattleInfo {
 
 	public void setUserMp(Integer userMp) {
 		this.userMp = userMp;
+	}
+
+	public boolean getIsMagic() {
+		return isMagic;
+	}
+
+	public void setIsMagic(boolean bool) {
+		this.isMagic = bool;
 	}
 
 

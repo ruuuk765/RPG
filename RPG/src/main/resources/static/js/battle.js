@@ -4,6 +4,22 @@ $(function(){
         $.ajax({
             url:'./attack',
             type:'POST',
+            data:{"magicId":'0'},
+            dataType:"json",
+            success: function(bi){
+            	console.log(bi);
+            }
+        })
+    });
+});
+
+//まほう
+$(function(){
+    $('.magic').on('click',function(){
+        $.ajax({
+            url:'./attack',
+            type:'POST',
+            data:{"magicId":$('.magic').attr('id')},
             dataType:"json",
             success: function(bi){
             	console.log(bi);
@@ -23,23 +39,24 @@ $(function(){
             dataType:"json",
             success: function(bi){
             	//メッセージ表示
-        		$(".messageWindow").html("<p>" + bi.context[0] +"<p>");
+            	$('.magics').hide();
+        		$(".messages").html("<p>" + bi.context[0] +"<p>");
             	for (var i = 1, l = bi.context.length; i < l; ++i) {
-        			$(".messageWindow").append("<p>" + bi.context[i] +"<p>");
+        			$(".messages").append("<p>" + bi.context[i] +"<p>");
             	}
 
             	//ユーザーHP表示
             	$(".userHp").html(bi.userHp);
 
-            	if(bi.isContinue){
+            	if(bi.status == "continue"){
             		//戦闘続行
             		setTimeout(function(){
-            			$(".messageWindow").html("<p>どうする？<p>");
+            			$(".messages").html("<p>どうする？<p>");
             		},1500);
             	}else{
             		//戦闘不能
             		setTimeout(function(){
-            			$(".messageWindow").html("<p>まけてしまった...<p>");
+            			$(".messages").html("<p>まけてしまった...<p>");
             		},1500);
             		setTimeout(function(){
             			//ホームへ遷移
@@ -60,3 +77,14 @@ $(function(){
       $('.magics').show();
    });
 });
+
+
+
+//ボタン連打防止
+//function button() {
+//
+//	$(".attack").toggleClass("attack");
+//	$(".magicList").toggleClass("magicList");
+//	$(".defense").toggleClass("defense");
+//
+//}
