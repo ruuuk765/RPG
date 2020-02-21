@@ -25,14 +25,6 @@ public class User extends Chara{
 	private Integer clearFlg;
 	private Integer deleteFlg;
 
-//	レベルアップ乱数調整
-	private static final Integer maxHpUpRate = 5;
-	private static final Integer maxMpUpRate = 5;
-	private static final Integer powerUpRate = 5;
-	private static final Integer intelligenceUpRate = 5;
-	private static final Integer defenseUpRate = 5;
-	private static final Integer speedUpRate = 5;
-
 //	コンストラクタ
 	public User() {
 
@@ -166,6 +158,9 @@ public class User extends Chara{
 	public void setDeleteFlg(Integer deleteFlg) {
 		this.deleteFlg = deleteFlg;
 	}
+
+//	User勝利時の処理
+//	CharaインターフェースのbattleCalcメソッドで使用
 	@Override
 	public void winner(BattleInfo bi, Chara chara) {
 		Enemy enemy = (Enemy)chara;
@@ -175,29 +170,10 @@ public class User extends Chara{
 				+ enemy.getDropGold() + "G を獲得した。<br>"
 				+ enemy.getDropXp() + "xp を獲得した。");
 
-//		レベルアップの確認
-		Integer lvUp = lvDao.lvCheck(xp).getLv();
-		if(lvUp > lv) {
-			Integer maxHpUp = 0;
-			Integer maxMpUp = 0;
-			Integer powerUp = 0;
-			Integer intelligenceUp = 0;
-			Integer defenseUp = 0;
-			Integer speedUp = 0;
-			for(int i = 0; i>(lvUp-lv); i++) {
-				maxHpUp += (int) (Math.random() * 3 + 8) * maxHpUpRate;
-				maxMpUp += (int) (Math.random() * 3 + 8) * maxMpUpRate;
-				powerUp += (int) (Math.random() * 3 + 8) * powerUpRate;
-				intelligenceUp += (int) (Math.random() * 3 + 8) * intelligenceUpRate;
-				defenseUp += (int) (Math.random() * 3 + 8) * defenseUpRate;
-				speedUp += (int) (Math.random() * 3 + 8) * speedUpRate;
-			}
-			lv = lvUp;
-			maxHp += maxHpUp;
-			maxMp += maxMpUp;
-			power +=
-		}
-
+	}
+	@Override
+	public void MagicAttack(BattleInfo bi, Chara chara) {
+		// TODO 自動生成されたメソッド・スタブ
 
 	}
 }
