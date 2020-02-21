@@ -21,6 +21,7 @@ public class BattleCommandAttack{
 	@Autowired
 	HttpSession session;
 
+
 	//ごうげき
 	@RequestMapping("/attack")
 	public BattleInfo Attack(@RequestParam("magicId")Integer magicId) {

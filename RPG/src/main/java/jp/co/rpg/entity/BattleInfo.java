@@ -13,6 +13,7 @@ public class BattleInfo {
 	private String status = CONTINUE;
 	private Integer userHp;
 	private Integer userMp;
+
 	private boolean isMagic = false;
 
 	private User user;

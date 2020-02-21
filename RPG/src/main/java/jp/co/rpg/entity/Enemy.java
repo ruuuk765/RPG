@@ -35,5 +35,10 @@ public class Enemy extends Chara {
 		bi.setStatus("lose");
 
 	}
+	@Override
+	public void MagicAttack(BattleInfo bi, Chara chara) {
+		// TODO 自動生成されたメソッド・スタブ
+
+	}
 
 }
