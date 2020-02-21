@@ -1,5 +1,7 @@
 package jp.co.rpg.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jp.co.rpg.entity.BattleInfo;
 import jp.co.rpg.entity.Enemy;
+import jp.co.rpg.entity.Magic;
 import jp.co.rpg.entity.User;
 
 @RestController
@@ -25,12 +28,15 @@ public class BattleCommandAttack{
 		//ユーザーと敵の情報取得
 		User user = (User) session.getAttribute("user");
 		Enemy enemy = (Enemy) session.getAttribute("enemy");
-
 		BattleInfo bi = new BattleInfo();
 
 		//まほうが選択された場合
-		if(magicId != 0)
+		if(magicId != 0) {
 			bi.setIsMagic(true);
+			List <Magic> magicList = (List) session.getAttribute("magicList");
+			Magic magic = magicList.get(magicId);
+			bi.setMagic(magic);
+		}
 
 		//スピードチェック
 		if(user.getSpeed() >= enemy.getSpeed()) {

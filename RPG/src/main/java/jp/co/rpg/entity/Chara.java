@@ -11,7 +11,44 @@ public abstract class Chara {
 	protected Integer defense;
 	protected Integer speed;
 
-//	getter setter
+
+//	バトル計算処理
+	public boolean battleCalc(BattleInfo bi,Chara chara) {
+
+		boolean isCountinue = true;
+		Integer damage = 0;
+
+		if(bi.getIsMagic()) {
+			//まほう
+//			MagicAttack(bi, chara);
+		}else {
+			//たたかう
+			damage = power - chara.getDefense();
+			if(damage <0)
+				//最低ダメージは1とする
+				damage = 1;
+			bi.setContext(name + "は、" + chara.getName() + "に" + damage + "ダメージあたえた。");
+		}
+		Integer remainHp = chara.getHp() - damage;
+
+		//HPチェック
+		if(remainHp <= 0) {
+			remainHp = 0;
+			isCountinue = false;
+
+			//勝利or敗北
+			winner(bi, chara);
+		}
+		chara.setHp(remainHp);
+		return isCountinue;
+	}
+
+	public abstract void winner(BattleInfo bi, Chara chara);
+
+	public abstract void MagicAttack(BattleInfo bi, Chara chara);
+
+
+	//	getter setter
 	public Integer getId() {
 		return id;
 	}
@@ -60,38 +97,4 @@ public abstract class Chara {
 	public void setSpeed(Integer speed) {
 		this.speed = speed;
 	}
-
-//	バトル計算処理
-	public boolean battleCalc(BattleInfo bi,Chara chara) {
-
-		boolean isCountinue = true;
-		Integer damage = 0;
-
-		if(bi.getIsMagic()) {
-			//まほう
-
-		}else {
-			//たたかう
-			damage = power - chara.getDefense();
-			if(damage <0)
-				//最低ダメージは1とする
-				damage = 1;
-			bi.setContext(name + "は、" + chara.getName() + "に" + damage + "ダメージあたえた。");
-		}
-		Integer remainHp = chara.getHp() - damage;
-
-		//HPチェック
-		if(remainHp <= 0) {
-			remainHp = 0;
-			isCountinue = false;
-
-			//勝利or敗北
-			winner(bi, chara);
-		}
-		chara.setHp(remainHp);
-		return isCountinue;
-	}
-
-	public abstract void winner(BattleInfo bi, Chara chara);
-
 }

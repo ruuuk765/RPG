@@ -16,10 +16,11 @@ $(function(){
 //まほう
 $(function(){
     $('.magic').on('click',function(){
+    	var magicId =  $(this).attr("id");
         $.ajax({
             url:'./attack',
             type:'POST',
-            data:{"magicId":$('.magic').attr('id')},
+            data:{"magicId":magicId},
             dataType:"json",
             success: function(bi){
             	console.log(bi);
