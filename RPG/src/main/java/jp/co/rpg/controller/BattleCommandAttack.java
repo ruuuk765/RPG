@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jp.co.rpg.entity.BattleInfo;
 import jp.co.rpg.entity.Enemy;
+import jp.co.rpg.entity.Lv;
 import jp.co.rpg.entity.Magic;
 import jp.co.rpg.entity.User;
 
@@ -20,6 +21,14 @@ import jp.co.rpg.entity.User;
 public class BattleCommandAttack{
 	@Autowired
 	HttpSession session;
+
+//	レベルアップ乱数調整
+	private static final Integer maxHpUpRate = 5;
+	private static final Integer maxMpUpRate = 5;
+	private static final Integer powerUpRate = 5;
+	private static final Integer intelligenceUpRate = 5;
+	private static final Integer defenseUpRate = 5;
+	private static final Integer speedUpRate = 5;
 
 
 	//ごうげき
@@ -55,6 +64,38 @@ public class BattleCommandAttack{
 				user.battleCalc(bi, enemy);
 			}
 		}
+
+//		レベルアップの確認
+		Lv lv = (Lv) session.getAttribute("nextLv");
+		if(lv.getNeedXp() <= user.getXp()) {
+			Integer maxHpUp = (int) (Math.random() * 3 + 8) * maxHpUpRate;
+			Integer maxMpUp = (int) (Math.random() * 3 + 8) * maxMpUpRate;
+			Integer powerUp = (int) (Math.random() * 3 + 8) * powerUpRate;
+			Integer intelligenceUp = (int) (Math.random() * 3 + 8) * intelligenceUpRate;
+			Integer defenseUp = (int) (Math.random() * 3 + 8) * defenseUpRate;
+			Integer speedUp = (int) (Math.random() * 3 + 8) * speedUpRate;
+
+			user.setLv(lv.getLv());
+			user.setXp(lv.getNeedXp());
+			user.setMaxHp(user.getMaxHp() + maxHpUp);
+			user.setMaxMp(user.getMaxMp() + maxMpUp);
+			user.setPower(user.getPower() + powerUp);
+			user.setIntelligence(user.getIntelligence() + intelligenceUp);
+			user.setDefense(user.getDefense() + defenseUp);
+			user.setSpeed(user.getSpeed() + speedUp);
+
+//			メッセージの格納
+			bi.setContext(
+					user.getName() + "は、" + user.getLv() + "レベルになった。" +
+					"最大HPが" + maxHpUp + "増えた。" +
+					"最大MPが" + maxMpUp + "増えた。" +
+					"ちからが" + powerUp + "増えた。" +
+					"ちりょくが" + intelligenceUp + "増えた。" +
+					"ぼうぎょが" + defenseUp + "増えた。" +
+					"はやさが" + speedUp + "増えた。"
+					);
+		}
+
 		session.setAttribute("user", user);
 		bi.setUser(user);
 		return bi;
