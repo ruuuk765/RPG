@@ -1,13 +1,6 @@
 package jp.co.rpg.entity;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import jp.co.rpg.dao.LvDao;
-
 public class User extends Chara{
-
-	@Autowired
-	LvDao lvDao;
 
 	// フィールド
 	private String userId;
@@ -100,6 +93,9 @@ public class User extends Chara{
 	}
 
 	public void setXp(Integer xp) {
+		if(this.getLv() >= 10) {
+			xp = 0;
+		}
 		this.xp = xp;
 	}
 
@@ -159,21 +155,105 @@ public class User extends Chara{
 		this.deleteFlg = deleteFlg;
 	}
 
-//	User勝利時の処理
-//	CharaインターフェースのbattleCalcメソッドで使用
+	//User勝利
+	//CharaインターフェースのbattleCalcメソッドで使用
 	@Override
-	public void winner(BattleInfo bi, Chara chara) {
+	public void win(BattleInfo bi, Chara chara) {
 		Enemy enemy = (Enemy)chara;
-		xp = xp + enemy.getDropXp();
-		gold = gold + enemy.getDropGold();
-		bi.setContext(enemy.getName() + "を倒した。<br>"
-				+ enemy.getDropGold() + "G を獲得した。<br>"
-				+ enemy.getDropXp() + "xp を獲得した。");
+		bi.setStatus("win");
+		this.setXp(this.getXp() + enemy.getDropXp());
+		this.setGold(this.getGold() + enemy.getDropGold());
+		if(this.getLv() >= 10) {
+			enemy.setDropXp(0);
+		}
+		bi.setContext(enemy.getName() + "をたおした。<br>"
+				+ enemy.getDropXp() + "XPと"
+				+ enemy.getDropGold() + "G をかくとくした。");
+		//LVアップ判定
+		if(bi.getNextLv().getNeedXp() <= xp && lv <10) {
+			lvUp(bi);
+		}
 
 	}
+
+	//まほうこうげき
 	@Override
-	public void MagicAttack(BattleInfo bi, Chara chara) {
-		// TODO 自動生成されたメソッド・スタブ
+	public void spellMagic(BattleInfo bi, Chara chara) {
+		Enemy enemy = (Enemy)chara;
+		Magic magic = bi.getMagic();
+		bi.setContext(this.getName() + "は" + magic.getName()+"を唱えた");
 
+		switch(magic.getType()) {
+
+		//こうげきまほう
+		case 1:
+			if(this.getMp() - magic.getNeedMp() < 0) {
+				bi.setContext("MPがたりなかった");
+				return;
+			}
+			Integer damege = this.getIntelligence() * magic.getMagicRate() - enemy.getDefense();
+			bi.setContext(enemy.getName() + "に" + damege + "のダメージを与えた");
+			enemy.setHp(enemy.getHp() - damege);
+			this.setMp(this.getMp() - magic.getNeedMp());
+			break;
+		//かいふくまほう
+		case 2:
+			if(this.getMp() - magic.getNeedMp() < 0) {
+				bi.setContext("MPがたりなかった");
+				return;
+			}
+
+			Integer healHp = this.getIntelligence() * magic.getMagicRate();
+			//回復量が最大HPを超過していた場合
+			if(healHp + this.getHp() > this.getMaxHp()) {
+				healHp = this.getMaxHp() - this.getHp();
+				this.setHp(this.getMaxHp());
+			}else {
+				this.setHp(this.getHp() + healHp);
+			}
+			bi.setContext("HPが" + healHp + "かいふくした");
+			this.setMp(this.getMp() - magic.getNeedMp());
+			break;
+		}
 	}
+
+	//LVアップ
+	private void lvUp(BattleInfo bi) {
+		//レベルアップ乱数調整
+		final Integer MAX_HP_UP_RATE = 5;
+		final Integer MAX_MP_UP_RATE = 5;
+		final Integer POWER_UP_RATE = 1;
+		final Integer INTELLIGENCE_UP_RATE = 1;
+		final Integer DEFENSE_UP_RATE = 1;
+		final Integer SPEED_UP_RATE = 1;
+
+		Integer maxHpUp = (int) (Math.random() * 3 + 8) * MAX_HP_UP_RATE;
+		Integer maxMpUp = (int) (Math.random() * 3 + 8) * MAX_MP_UP_RATE;
+		Integer powerUp = (int) (Math.random() * 3 + 3) * POWER_UP_RATE;
+		Integer intelligenceUp = (int) (Math.random() * 3 +3) * INTELLIGENCE_UP_RATE;
+		Integer defenseUp = (int) (Math.random() * 3 + 3) * DEFENSE_UP_RATE;
+		Integer speedUp = (int) (Math.random() * 3 + 3) * SPEED_UP_RATE;
+
+		this.setLv(bi.getNextLv().getLv());
+		this.setXp(bi.getNextLv().getNeedXp());
+		this.setMaxHp(this.getMaxHp() + maxHpUp);
+		this.setMaxMp(this.getMaxMp() + maxMpUp);
+		this.setPower(this.getPower() + powerUp);
+		this.setIntelligence(this.getIntelligence() + intelligenceUp);
+		this.setDefense(this.getDefense() + defenseUp);
+		this.setSpeed(this.getSpeed() + speedUp);
+
+		//メッセージの格納
+		bi.setLvUpContext(
+				this.getName() + "はレベルがあがった！<br><br>" +
+				"さいだいHPが" + maxHpUp + "<br>" +
+				"さいだいMPが" + maxMpUp + "<br>" +
+				"ちからが" + powerUp + "<br>" +
+				"ちりょくが" + intelligenceUp + "<br>" +
+				"ぼうぎょが" + defenseUp + "。<br>" +
+				"はやさが" + speedUp + "あがった。"
+		);
+		bi.setIsLvUp(true);
+	}
+
 }

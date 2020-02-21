@@ -45,7 +45,7 @@ public class ChangeRoleController {
 	}
 
 	//てんしょく→ホーム(もどる)
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	@RequestMapping(value = "/home", method = RequestMethod.GET, params="changeRole")
 	public String getHome() {
 
 		return "home";

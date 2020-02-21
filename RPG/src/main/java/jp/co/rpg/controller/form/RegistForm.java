@@ -4,7 +4,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-public class CreateAccountForm {
+public class RegistForm {
 
 	// フィールド
 	@NotBlank(message="※入力してください")

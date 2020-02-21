@@ -48,7 +48,7 @@
 		                </li>
 				  </c:otherwise>
 	            </c:choose>
-	            <a class="return" href="home" class="link">
+	            <a class="return" href="home" class="link" name="changeRole">
 	                <img src="img/return.png" alt="#" width="50px" height="50px">
 	                <p>もどる</p>
 	            </a>

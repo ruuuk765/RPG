@@ -62,7 +62,6 @@ public class LoginController {
 			session.setAttribute("role", role);
 
 			//ユーザの次のLVのインスタンスを保存
-			//ユーザの次のLVのインスタンスを保存
 			Lv nextLv = new Lv();
 			if(user.getLv() < 10) {
 				nextLv = lvDao.findNextLv(user.getLv()).get(0);

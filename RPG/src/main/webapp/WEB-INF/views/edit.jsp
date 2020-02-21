@@ -43,7 +43,7 @@
             </ul>
         </form:form>
         <div class="return">
-            <a href="home">
+            <a href="home" name="edit">
                 <img src="img/return.png" alt="#" width="50px" height="50px">
                 <p>もどる</p>
             </a>

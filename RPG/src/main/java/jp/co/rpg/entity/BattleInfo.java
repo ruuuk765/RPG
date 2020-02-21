@@ -8,16 +8,20 @@ public class BattleInfo {
 	private static final String CONTINUE = "continue";
 	private static final String WIN = "win";
 	private static final String LOSE = "lose";
+	private String status = CONTINUE;
+	private String lvUpContext;
 
 	private List<String> context = new ArrayList<String>();
-	private String status = CONTINUE;
+
 	private Integer userHp;
 	private Integer userMp;
 
 	private boolean isMagic = false;
+	private boolean isLvUp = false;
 
 	private User user;
 	private Magic magic;
+	private Lv nextLv;
 
 	public List<String> getContext() {
 		return context;
@@ -88,21 +92,28 @@ public class BattleInfo {
 		return magic;
 	}
 
-//	@Override
-//	public void magicAttack(BattleInfo bi Chara chara) {
-//		//cast
-//		Magic magic = bi.getMagic();
-//		bi.setContext(name + "は" + magic.getName()+"を唱えた");
-//
-//		switch(magic.getType()) {
-//
-//		case: 1
-//			(enemy.getName() + "に" + intelligence * magic.getMagicRate() - enemy.getDiffense() + "のダメージを与えた")
-//		}
-//
-//
-//	}
+	public void setNextLv(Lv nextLv) {
+		this.nextLv = nextLv;
+	}
 
+	public Lv getNextLv() {
+		return nextLv;
+	}
 
+	public boolean getIsLvUp() {
+		return isLvUp;
+	}
+
+	public void setIsLvUp(boolean bool) {
+		this.isLvUp = bool;
+	}
+
+	public void setLvUpContext(String lvUpContext) {
+		this.lvUpContext = lvUpContext;
+	}
+
+	public String getLvUpContext() {
+		return lvUpContext;
+	}
 
 }

@@ -48,7 +48,7 @@
                   <li><a href="changeRole">てんしょく</a></li>
                   <li><a href="#" class="save">セーブ</a></li>
                     <li><a href="edit">へんしゅう</a></li>
-                    <li><a href="logout">おわる</a></li>
+                    <li><a href="index" name="logout">おわる</a></li>
                   </ul>
                 </div>
               </li>
@@ -77,8 +77,8 @@
                     <li><p>${fn:escapeXml(user.intelligence)}</p></li>
                     <li><p>${fn:escapeXml(user.defense)}</p></li>
                     <li><p>${fn:escapeXml(user.speed)}</p></li>
-                    <li><p>${fn:escapeXml(user.gold)}</p></li>
-                    <li><p>${fn:escapeXml(nextLv.needXp - user.xp)}</p></li>
+                    <li><p>${fn:escapeXml(user.gold)}G</p></li>
+                    <li><p>${fn:escapeXml(nextLv.needXp - user.xp)}XP</p></li>
                   </ul>
                 </div>
               </li>

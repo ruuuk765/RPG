@@ -17,7 +17,7 @@
         <p>${fn:escapeXml(msg)}</p>
     </div>
     <section>
-        <form:form action="confirm" method="post" id="regist" modelAttribute="test">
+        <form:form action="confirm" method="post" id="regist" modelAttribute="regist">
             <ul class="user__info">
                 <li>
                     <p>ID</p>

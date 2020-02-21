@@ -26,8 +26,11 @@ public class Enemy extends Chara {
 	public void setDropGold(Integer dropGold) {
 		this.dropGold = dropGold;
 	}
+
+	//User敗北
+	//CharaインターフェースのbattleCalcメソッドで使用
 	@Override
-	public void winner(BattleInfo bi, Chara chara) {
+	public void win(BattleInfo bi, Chara chara) {
 		User user = (User)chara;
 		user.setGold(user.getGold() / 2);
 		bi.setContext(user.getName() + "は、まけてしまった。<br>"
@@ -35,9 +38,11 @@ public class Enemy extends Chara {
 		bi.setStatus("lose");
 
 	}
+
+	//まほうこうげき
+	//敵はまほうが使えないので処理無し
 	@Override
-	public void MagicAttack(BattleInfo bi, Chara chara) {
-		// TODO 自動生成されたメソッド・スタブ
+	public void spellMagic(BattleInfo bi, Chara chara) {
 
 	}
 

@@ -20,14 +20,14 @@ public abstract class Chara {
 
 		if(bi.getIsMagic()) {
 			//まほう
-//			MagicAttack(bi, chara);
+			spellMagic(bi, chara);
 		}else {
 			//たたかう
-			damage = power - chara.getDefense();
+			damage = this.getPower() - chara.getDefense();
 			if(damage <0)
 				//最低ダメージは1とする
 				damage = 1;
-			bi.setContext(name + "は、" + chara.getName() + "に" + damage + "ダメージあたえた。");
+			bi.setContext(this.getName() + "は、" + chara.getName() + "に" + damage + "ダメージあたえた。");
 		}
 		Integer remainHp = chara.getHp() - damage;
 
@@ -37,15 +37,15 @@ public abstract class Chara {
 			isCountinue = false;
 
 			//勝利or敗北
-			winner(bi, chara);
+			win(bi, chara);
 		}
 		chara.setHp(remainHp);
 		return isCountinue;
 	}
 
-	public abstract void winner(BattleInfo bi, Chara chara);
+	public abstract void win(BattleInfo bi, Chara chara);
 
-	public abstract void MagicAttack(BattleInfo bi, Chara chara);
+	public abstract void spellMagic(BattleInfo bi, Chara chara);
 
 
 	//	getter setter

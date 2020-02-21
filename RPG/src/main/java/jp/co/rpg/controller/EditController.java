@@ -47,4 +47,11 @@ public class EditController {
 		return "home";
 
 	}
+
+	//へんしゅう→ホーム(もどる)
+	@RequestMapping(value = "/home", method = RequestMethod.GET, params="edit")
+	public String getHome() {
+
+		return "home";
+	}
 }

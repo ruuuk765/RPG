@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import jp.co.rpg.dao.EnemyDao;
+import jp.co.rpg.dao.LvDao;
 import jp.co.rpg.dao.MagicDao;
 import jp.co.rpg.entity.Enemy;
+import jp.co.rpg.entity.Lv;
 import jp.co.rpg.entity.Magic;
 import jp.co.rpg.entity.Role;
 import jp.co.rpg.entity.User;
@@ -25,6 +27,8 @@ public class BattleController {
 	private EnemyDao enemyDao;
 	@Autowired
 	private MagicDao magicDao;
+	@Autowired
+	private LvDao lvDao;
 
 	//ホーム→せんとう(通常)
 	@RequestMapping("/battle")
@@ -59,5 +63,24 @@ public class BattleController {
 		session.setAttribute("magicList", magicList);
 
 		return "battle";
+	}
+
+	//せんとう(通常)→ホーム
+	@RequestMapping("/home")
+	public String home() {
+
+		//ユーザー情報取得
+		User user = (User) session.getAttribute("user");
+
+		//ユーザの次のLVのインスタンスを保存
+		Lv nextLv = new Lv();
+		if(user.getLv() < 10) {
+			nextLv = lvDao.findNextLv(user.getLv()).get(0);
+		}else {
+			nextLv.setNeedXp(user.getXp());
+		}
+		session.setAttribute("nextLv", nextLv);
+
+		return "home";
 	}
 }

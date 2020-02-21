@@ -17,7 +17,7 @@
         <p>これでよろしいですか？</p>
     </div>
     <section>
-        <form action="test" id="login">
+        <form action="home"  method="post" id="regist">
             <ul class="list">
                 <li>
                     <p>ID</p>
@@ -49,14 +49,10 @@
             </a>
         </div>
         <div class="confirm">
-            <!-- <button type="submit" id="login">
+            <button type="submit" form="regist" name="regist">
                 <img src="img/confirm.png" alt="#" width="50px" height="50px">
                 <p>きまり</p>
-            </button> -->
-            <a href="createAccount">
-                <img src="img/confirm.png" alt="#" width="50px" height="50px">
-                <p>きまり</p>
-            </a>
+            </button>
         </div>
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

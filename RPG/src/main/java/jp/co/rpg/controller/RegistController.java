@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import jp.co.rpg.controller.form.CreateAccountForm;
+import jp.co.rpg.controller.form.RegistForm;
 import jp.co.rpg.dao.LvDao;
 import jp.co.rpg.entity.User;
 import jp.co.rpg.service.CreateAccountService;
@@ -19,7 +19,7 @@ import jp.co.rpg.service.CreateAccountService;
 //制作日：2020.02.14
 //制作者：新垣
 @Controller
-public class CreateAccountController {
+public class RegistController {
 
 	@Autowired
 	CreateAccountService service;
@@ -36,13 +36,13 @@ public class CreateAccountController {
 
 //	idex.jsp - regist.jsp
 	@RequestMapping("/regist")
-	public String createAccountPage(@ModelAttribute("test") CreateAccountForm form, Model model) {
+	public String createAccountPage(@ModelAttribute("regist") RegistForm form, Model model) {
 		return "regist";
 	}
 
 //	regist.jsp - confirm.jsp
 	@RequestMapping(value="/confirm", method=RequestMethod.POST)
-	public String confirm(@Validated @ModelAttribute("test") CreateAccountForm form,
+	public String confirm(@Validated @ModelAttribute("regist") RegistForm form,
 	BindingResult bindingResult, Model model) {
 
 		if (bindingResult.hasErrors()) {
@@ -64,8 +64,6 @@ public class CreateAccountController {
 //		セッションにUer型の情報を保存
 		User user = new User();
 
-
-
 		user.setUserId(form.getUserId());
 		user.setPassword(form.getPassword());
 		user.setName(form.getName());
@@ -78,8 +76,8 @@ public class CreateAccountController {
 	}
 
 //	confirm.jsp - home.jsp
-	@RequestMapping("/createAccount")
-	public String createAccount() {
+	@RequestMapping(value = "/home", method = RequestMethod.POST, params="regist")
+	public String home() {
 
 //		CreateAccountServiceを使って登録
 		User user = new User();
