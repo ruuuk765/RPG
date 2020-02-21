@@ -78,7 +78,7 @@
                     <li><p>${fn:escapeXml(user.defense)}</p></li>
                     <li><p>${fn:escapeXml(user.speed)}</p></li>
                     <li><p>${fn:escapeXml(user.gold)}</p></li>
-                    <li><p>${fn:escapeXml(user.xp)}</p></li>
+                    <li><p>${fn:escapeXml(nextLv.needXp - user.xp)}</p></li>
                   </ul>
                 </div>
               </li>

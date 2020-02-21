@@ -1,6 +1,5 @@
 package jp.co.rpg.dao.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,24 +27,20 @@ public class RoleDaoImpl implements RoleDao {
 	public List<Role> find (Role role) {
 		String SQL_SELECT_FIND = "";
 		StringBuilder forSearch = new StringBuilder("SELECT * FROM roles where 1 = 1");
+		MapSqlParameterSource param = new MapSqlParameterSource();
 
 		if(!(Util.isNullOrEmpty(role.getId()))) {
 			forSearch.append(" AND id = :id");
+			param.addValue("id", role.getId());
 		}
 		if(!(Util.isNullOrEmpty(role.getName()))) {
 			forSearch.append(" AND name = :name");
+			param.addValue("password", role.getName());
 		}
 
 		SQL_SELECT_FIND = forSearch.toString();
 
-		MapSqlParameterSource param = new MapSqlParameterSource();
-		param.addValue("id", role.getId());
-		param.addValue("password", role.getName());
-
-		List<Role> list = new ArrayList<Role>();
-		list = jdbcTemplate.query(SQL_SELECT_FIND, param, new BeanPropertyRowMapper<Role>(Role.class));
-
-		return list;
+		return jdbcTemplate.query(SQL_SELECT_FIND, param, new BeanPropertyRowMapper<Role>(Role.class));
 	}
 
 }

@@ -46,7 +46,7 @@ public class BattleController {
 			//ボスデータを取得
 			enemy = enemyDao.findBoss().get(0);
 		}
-
+		
 		session.setAttribute("enemy", enemy);
 
 		//習得済み魔法取得（DAOやテーブルを含めて大幅に改善の必要あり）

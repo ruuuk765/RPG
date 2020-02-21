@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.rpg.controller.form.CreateAccountForm;
+import jp.co.rpg.dao.LvDao;
 import jp.co.rpg.entity.User;
 import jp.co.rpg.service.CreateAccountService;
 
@@ -24,6 +25,8 @@ public class CreateAccountController {
 	CreateAccountService service;
 	@Autowired
 	HttpSession session;
+	@Autowired
+	private LvDao lvDao;
 
 //	idex.jsp
 	@RequestMapping("/index")
@@ -87,6 +90,7 @@ public class CreateAccountController {
 		session.setAttribute("user", user);
 		session.setAttribute("role", user.getRole());
 		session.setAttribute("roleList", service.getAll());
+		session.setAttribute("nextLv", lvDao.findNextLv(user.getLv()).get(0));
 
 		return "home";
 	}

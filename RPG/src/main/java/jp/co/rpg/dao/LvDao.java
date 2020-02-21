@@ -8,7 +8,8 @@ public interface LvDao {
 
 	public List<Lv> getAll();
 
-
 	Lv lvCheck(Integer xp);
+
+	public List<Lv> findNextLv(Integer nowLv);
 
 }
