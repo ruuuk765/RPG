@@ -12,3 +12,5 @@ public interface LvDao {
 	Lv lvCheck(Integer xp);
 
 }
+
+

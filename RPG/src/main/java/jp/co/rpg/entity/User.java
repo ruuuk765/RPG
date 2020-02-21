@@ -166,6 +166,9 @@ public class User extends Chara{
 	public void setDeleteFlg(Integer deleteFlg) {
 		this.deleteFlg = deleteFlg;
 	}
+
+//	User勝利時の処理
+//	CharaインターフェースのbattleCalcメソッドで使用
 	@Override
 	public void winner(BattleInfo bi, Chara chara) {
 		Enemy enemy = (Enemy)chara;
@@ -176,6 +179,7 @@ public class User extends Chara{
 				+ enemy.getDropXp() + "xp を獲得した。");
 
 //		レベルアップの確認
+		System.out.println(lvDao);
 		Integer lvUp = lvDao.lvCheck(xp).getLv();
 		if(lvUp > lv) {
 			Integer maxHpUp = 0;
@@ -195,9 +199,21 @@ public class User extends Chara{
 			lv = lvUp;
 			maxHp += maxHpUp;
 			maxMp += maxMpUp;
-			power +=
+			power += powerUp;
+			intelligence += intelligenceUp;
+			defense += defenseUp;
+			speed += speedUp;
+
+//			メッセージの格納
+			bi.setContext(
+					name + "は、" + lvUp + "レベルになった。" +
+					"最大HPが" + maxHpUp + "増えた。" +
+					"最大MPが" + maxMpUp + "増えた。" +
+					"ちからが" + powerUp + "増えた。" +
+					"ちりょくが" + intelligenceUp + "増えた。" +
+					"ぼうぎょが" + defenseUp + "増えた。" +
+					"はやさが" + speedUp + "増えた。"
+					);
 		}
-
-
 	}
 }
