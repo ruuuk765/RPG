@@ -35,10 +35,19 @@ public class ChangeRoleController {
 		//roleIdを変更し、セッションとDBに保存
 		User user = (User) session.getAttribute("user");
 		List<Role> roleList = (List) session.getAttribute("roleList");
+
+		Role oldRole = roleList.get(user.getRole().getId()-1);
+		Role newRole = roleList.get(roleId -1);
+
+		//前職業のステータス率を割り、新職業のステータス率を掛ける
+		user.setPower((int)Math.round((double)(user.getPower() /oldRole.getPowerRate() * newRole.getPowerRate())));
+		user.setIntelligence((int)Math.round((double)(user.getIntelligence() /oldRole.getIntelligenceRate()  * newRole.getIntelligenceRate())));
+		user.setDefense((int)Math.round((double)(user.getDefense() /oldRole.getDefenceRate()  * newRole.getDefenceRate())));
+		user.setSpeed((int)Math.round((double)(user.getSpeed() /oldRole.getSpeedRate()  * newRole.getSpeedRate())));
+
 		user.setRoleId(roleId);
-		Role role = roleList.get(user.getRole().getId()-1);
 		userDao.update(user);
-		session.setAttribute("role", role);
+		session.setAttribute("role", newRole);
 		session.setAttribute("user", user);
 
 		return "home";

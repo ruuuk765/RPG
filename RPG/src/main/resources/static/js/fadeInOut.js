@@ -28,9 +28,14 @@ $('head').append(
 
 // ホーム画面、「セーブ」押下時のメッセージフェードイン/アウト
   $('.save').on('click', function(){
-    $('.message').fadeIn("slow", function () {
+    $('.errMsg').hide();
+    $('.saveMsg').fadeIn("slow", function () {
       $(this).delay(800).fadeOut("slow");
     });
+  });
+
+  $(function(){
+		$('.errMsg').delay(1600).fadeOut("slow");
   });
 
  //バトル画面、ボスメッセージフェードアウト

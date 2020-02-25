@@ -10,16 +10,20 @@ import jp.co.rpg.dao.UserDao;
 import jp.co.rpg.entity.User;
 
 @Controller
-public class SaveController {
+public class ClearController {
+
 	@Autowired
 	HttpSession session;
 	@Autowired
 	private UserDao userDao;
 
-	@RequestMapping("/save")
-	public void save() {
+	@RequestMapping("/clear")
+	public String clear() {
 
 		User user = (User) session.getAttribute("user");
-		userDao.update(user);
+		userDao.clearUpdate(user);
+
+		return "clear";
 	}
+
 }

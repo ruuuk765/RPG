@@ -11,5 +11,5 @@ public interface UserDao {
 	public void createAccount(User user);
 	public List<User> find(User user);
 	public void update(User user);
-
+	public void clearUpdate(User user);
 }

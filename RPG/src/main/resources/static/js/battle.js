@@ -1,20 +1,35 @@
+//実行中フラグ
+var run = false;
+
+//ボスフラグ
+var boss = false;
+var src = $('img').attr('src');
+if(src == 'img/enemy_999.gif')
+	boss = true;
+
 //こうげき
 $(function(){
+
+
     $('.attack').on('click',function(){
+    	//実行中だと処理を行わない
+    	if(run)
+ 		   return false;
+    	run = true;
+
         $.ajax({
             url:'./attack',
             type:'POST',
             data:{"magicId":'0'},
             dataType:"json",
             success: function(bi){
+
             	//メッセージ表示
             	$('.magics').hide();
         		$(".messages").html("<p>" + bi.context[0] +"<p>");
             	for (var i = 1, l = bi.context.length; i < l; ++i) {
         			$(".messages").append("<p>" + bi.context[i] +"<p>");
             	}
-
-            	console.log(bi.status);
 
             	//ユーザーHP表示
             	$(".userHp").html(bi.userHp);
@@ -24,6 +39,7 @@ $(function(){
             		case "continue":
             			setTimeout(function(){
                 			$(".messages").html("<p>どうする？<p>");
+                			 run = false;
                 		},1500);
             			break;
 
@@ -34,12 +50,21 @@ $(function(){
             			setTimeout(function(){
             				if(bi.isLvUp){
                         		$(".messages").html("<p>" + bi.lvUpContext +"<p>");
+                        		setTimeout(function(){
+                					//画面遷移
+                        			if(boss)
+                        				window.location.href = "/clear";
+                        			else
+                        				window.location.href = "/home";
+                				},4000);
+                        	}else{
+                        		//画面遷移
+                    			if(boss)
+                    				window.location.href = "/clear";
+                    			else
+                    				window.location.href = "/home";
                         	}
-            				setTimeout(function(){
-            					//ホームへ遷移
-            					window.location.href = "/home";
-            				},3000);
-                		},2500);
+                		},2300);
 
             			break;
 
@@ -55,6 +80,7 @@ $(function(){
             	}
             }
         })
+
     });
 });
 
@@ -62,6 +88,10 @@ $(function(){
 $(function(){
     $('.magic').on('click',function(){
     	var magicId =  $(this).attr("id");
+    	//実行中だと処理を行わない
+    	if(run)
+ 		   return false;
+    	run = true;
         $.ajax({
             url:'./attack',
             type:'POST',
@@ -85,6 +115,7 @@ $(function(){
         		case "continue":
         			setTimeout(function(){
             			$(".messages").html("<p>どうする？<p>");
+            			run = false;
             		},1500);
         			break;
 
@@ -95,12 +126,21 @@ $(function(){
         			setTimeout(function(){
         				if(bi.isLvUp){
                     		$(".messages").html("<p>" + bi.lvUpContext +"<p>");
+                    		setTimeout(function(){
+                    			//画面遷移
+                    			if(boss)
+                    				window.location.href = "/clear";
+                    			else
+                    				window.location.href = "/home";
+            				},4000);
+                    	}else{
+                    		//画面遷移
+                			if(boss)
+                				window.location.href = "/clear";
+                			else
+                				window.location.href = "/home";
                     	}
-        				setTimeout(function(){
-        					//ホームへ遷移
-        					window.location.href = "/home";
-        				},3000);
-            		},2500);
+            		},2300);
         			break;
 
         		case "lose":
@@ -123,6 +163,10 @@ $(function(){
 //ぼうぎょ
 $(function(){
     $('.defense').on('click',function(){
+    	//実行中だと処理を行わない
+    	if(run)
+ 		   return false;
+    	run = true;
         $.ajax({
             url:'./defense',
             type:'POST',
@@ -142,6 +186,7 @@ $(function(){
             		//戦闘続行
             		setTimeout(function(){
             			$(".messages").html("<p>どうする？<p>");
+            			run = false;
             		},1500);
             	}else{
             		//戦闘不能
@@ -163,6 +208,9 @@ $(function(){
 //まほう一覧表示
 $(function(){
     $('.magicList').on("click",function() {
+    	//実行中だと処理を行わない
+    	if(run)
+    		return false;
       $(".messages").html("");
       $('.magics').show();
    });
@@ -170,11 +218,3 @@ $(function(){
 
 
 
-//ボタン連打防止
-//function button() {
-//
-//	$(".attack").toggleClass("attack");
-//	$(".magicList").toggleClass("magicList");
-//	$(".defense").toggleClass("defense");
-//
-//}

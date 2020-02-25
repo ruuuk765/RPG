@@ -8,15 +8,15 @@ import jp.co.rpg.service.RestService;
 @Service
 public class RestServiceImpl implements RestService {
 
-	private final Integer isRestPrice = 50;
+	private final Integer restPrice = 50;
 
 	@Override
 	public Boolean rest(User user) {
 
-		if(user.getGold() >= isRestPrice) {
+		if(user.getGold() >= restPrice) {
 			user.setHp(user.getMaxHp());
 			user.setMp(user.getMaxMp());
-			user.setGold(((user.getGold())-isRestPrice));
+			user.setGold(((user.getGold())-restPrice));
 			return true;
 		}
 		return false;

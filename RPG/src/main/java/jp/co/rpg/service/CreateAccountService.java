@@ -31,7 +31,7 @@ public interface CreateAccountService {
 
 
 //	 UserDaoを使って新しいアカウントを作成
-	public User createAccount(User user);
+	public User createAccount(User user, Role role);
 
 
 //	Role全レコード取得

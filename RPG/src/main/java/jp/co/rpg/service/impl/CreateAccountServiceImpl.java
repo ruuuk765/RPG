@@ -31,17 +31,18 @@ public class CreateAccountServiceImpl implements CreateAccountService {
 	}
 
 	@Override
-	public User createAccount(User user) {
+	public User createAccount(User user, Role role) {
+
 //		entityUserに初期値フィールドをセット
 		user.setLv(lv);
 		user.setMaxHp(maxHp);
 		user.setHp(hp);
 		user.setMaxMp(maxMp);
 		user.setMp(mp);
-		user.setPower(power);
-		user.setIntelligence(intelligence);
-		user.setDefense(defense);
-		user.setSpeed(speed);
+		user.setPower((int)(power * role.getPowerRate()));
+		user.setIntelligence((int)(intelligence * role.getIntelligenceRate()));
+		user.setDefense((int)(defense * role.getDefenceRate()));
+		user.setSpeed((int)(speed * role.getSpeedRate()));
 		user.setXp(xp);
 		user.setGold(gold);
 		user.setSinceDays(sinceDays);

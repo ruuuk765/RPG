@@ -1,5 +1,7 @@
 package jp.co.rpg.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.rpg.controller.form.RegistForm;
 import jp.co.rpg.dao.LvDao;
+import jp.co.rpg.dao.RoleDao;
+import jp.co.rpg.entity.Role;
 import jp.co.rpg.entity.User;
 import jp.co.rpg.service.CreateAccountService;
 
@@ -27,6 +31,8 @@ public class RegistController {
 	HttpSession session;
 	@Autowired
 	private LvDao lvDao;
+	@Autowired
+	private RoleDao roleDao;
 
 //	idex.jsp
 	@RequestMapping("/index")
@@ -68,8 +74,14 @@ public class RegistController {
 		user.setPassword(form.getPassword());
 		user.setName(form.getName());
 		user.setRoleId(form.getRoleId());
-		user.setRoleName(service.isRoleName(user));
 
+		//ロールを全件取得して保存
+		List<Role> roleList = roleDao.getAll();
+		session.setAttribute("roleList", roleList);
+
+		//ユーザーのroleIdのものを保存
+		Role role = roleList.get(form.getRoleId()-1);
+		session.setAttribute("role", role);
 
 		session.setAttribute("user", user);
 		return "registConfirm";
@@ -80,14 +92,11 @@ public class RegistController {
 	public String home() {
 
 //		CreateAccountServiceを使って登録
-		User user = new User();
-		user = (User)session.getAttribute("user");
-		user = service.createAccount(user);
+		User user = (User)session.getAttribute("user");
+		Role role = (Role)session.getAttribute("role");
+		user = service.createAccount(user, role);
 
-		session.invalidate();
 		session.setAttribute("user", user);
-		session.setAttribute("role", user.getRole());
-		session.setAttribute("roleList", service.getAll());
 		session.setAttribute("nextLv", lvDao.findNextLv(user.getLv()).get(0));
 
 		return "home";

@@ -36,6 +36,15 @@ public class UserDaoImpl implements UserDao {
 			+ "since_days = :since_days, update_date = current_date "
 			+ "WHERE user_id = :user_id";
 
+	private static final String SQL_CLEARUPDATE = "UPDATE users SET "
+			+ "password = :password, name = :name, role_id = :role_id, "
+			+ "lv = :lv, max_hp = :max_hp, hp = :hp, max_mp = :max_mp, mp = :mp,"
+			+ "power = :power, intelligence = :intelligence, defense = :defense, speed = :speed, "
+			+ "xp = :xp, gold = :gold, "
+			+ "since_days = :since_days, update_date = current_date, "
+			+ "clear_flg = 1 "
+			+ "WHERE user_id = :user_id";
+
 	@Override
 	public void createAccount(User user) {
 		MapSqlParameterSource param = new MapSqlParameterSource();
@@ -89,6 +98,19 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public void update(User user) {
+		 MapSqlParameterSource param = usualUpdate(user);
+		jdbcTemplate.update(SQL_UPDATE, param);
+
+	}
+
+	@Override
+	public void clearUpdate(User user) {
+		MapSqlParameterSource param = usualUpdate(user);
+		jdbcTemplate.update(SQL_CLEARUPDATE, param);
+	}
+
+	//アップデートメソッド
+	private MapSqlParameterSource usualUpdate(User user) {
 		MapSqlParameterSource param = new MapSqlParameterSource();
 		param.addValue("password", user.getPassword());
 		param.addValue("name", user.getName());
@@ -106,9 +128,7 @@ public class UserDaoImpl implements UserDao {
 		param.addValue("gold", user.getGold());
 		param.addValue("since_days", user.getSinceDays());
 		param.addValue("user_id", user.getUserId());
-
-		jdbcTemplate.update(SQL_UPDATE, param);
-
+		return param;
 	}
 
 }

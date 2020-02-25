@@ -192,6 +192,8 @@ public class User extends Chara{
 				return;
 			}
 			Integer damege = this.getIntelligence() * magic.getMagicRate() - enemy.getDefense();
+			if(damege <= 0)
+				damege = 1;
 			bi.setContext(enemy.getName() + "に" + damege + "のダメージを与えた");
 			enemy.setHp(enemy.getHp() - damege);
 			this.setMp(this.getMp() - magic.getNeedMp());
@@ -220,8 +222,8 @@ public class User extends Chara{
 	//LVアップ
 	private void lvUp(BattleInfo bi) {
 		//レベルアップ乱数調整
-		final Integer MAX_HP_UP_RATE = 5;
-		final Integer MAX_MP_UP_RATE = 5;
+		final Integer MAX_HP_UP_RATE = 2;
+		final Integer MAX_MP_UP_RATE = 2;
 		final Integer POWER_UP_RATE = 1;
 		final Integer INTELLIGENCE_UP_RATE = 1;
 		final Integer DEFENSE_UP_RATE = 1;

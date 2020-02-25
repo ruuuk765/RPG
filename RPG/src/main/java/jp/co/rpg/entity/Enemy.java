@@ -33,10 +33,7 @@ public class Enemy extends Chara {
 	public void win(BattleInfo bi, Chara chara) {
 		User user = (User)chara;
 		user.setGold(user.getGold() / 2);
-		bi.setContext(user.getName() + "は、まけてしまった。<br>"
-				+ "所持金が半分になった。");
 		bi.setStatus("lose");
-
 	}
 
 	//まほうこうげき

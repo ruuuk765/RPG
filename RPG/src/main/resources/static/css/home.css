@@ -108,5 +108,10 @@ section > ul > li:nth-child(2){
     left: 50%;
     transform: translateY(80%);
     transform: translateX(-50%);
-    display: none;
+}
+.saveMsg{
+	display: none;
+}
+.color: rgb(179,54,67);{
+	color: rgb(179,54,67);
 }

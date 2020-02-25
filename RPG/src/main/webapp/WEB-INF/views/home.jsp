@@ -39,7 +39,8 @@
                 </div>
                 <div class="menuWindow">
                   <div class="message">
-                    <p>セーブしました</p>
+                 	<p class="errMsg">${errMsg}</p>
+                    <p class="saveMsg">セーブしました</p>
                   </div>
                   <ul>
                     <li><a href="battle?name=usual">せんとう</a></li>
