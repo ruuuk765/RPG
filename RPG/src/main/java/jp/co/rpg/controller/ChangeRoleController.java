@@ -39,7 +39,9 @@ public class ChangeRoleController {
 		Role oldRole = roleList.get(user.getRole().getId()-1);
 		Role newRole = roleList.get(roleId -1);
 
-		//前職業のステータス率を割り、新職業のステータス率を掛ける
+		//前職業のステータス率を割り、新職業のステータス率を掛ける(四捨五入)
+		//例:ちから7のユーザーがせんし(ちから×1.4UP)→まほうつかい(ちから×1.0UP)へ転職
+		//ちからは、7 ÷ 1.4 × 1.0 = 5となる
 		user.setPower((int)Math.round((double)(user.getPower() /oldRole.getPowerRate() * newRole.getPowerRate())));
 		user.setIntelligence((int)Math.round((double)(user.getIntelligence() /oldRole.getIntelligenceRate()  * newRole.getIntelligenceRate())));
 		user.setDefense((int)Math.round((double)(user.getDefense() /oldRole.getDefenceRate()  * newRole.getDefenceRate())));

@@ -50,17 +50,21 @@ public class BattleController {
 			//ボスデータを取得
 			enemy = enemyDao.findBoss().get(0);
 		}
+
 		session.setAttribute("enemy", enemy);
 
+
 		//習得済み魔法取得（DAOやテーブルを含めて大幅に改善の必要あり）
-		List<Magic> magicList = null;
-		if(role.getId() == 2) {
-			magicList = magicDao.findWizard();
-		}else if(role.getId() == 3) {
-			magicList = magicDao.findAll();
+		if(role.getId() != 1) {
+			List<Magic> magicList = null;
+			if(role.getId() == 2) {
+				magicList = magicDao.findWizard();
+			}else if(role.getId() == 3) {
+				magicList = magicDao.findAll();
+			}
+			magicList.add(0, null);
+			session.setAttribute("magicList", magicList);
 		}
-		magicList.add(0, null);
-		session.setAttribute("magicList", magicList);
 
 		return "battle";
 	}
