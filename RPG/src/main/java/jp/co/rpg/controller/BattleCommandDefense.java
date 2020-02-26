@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import jp.co.rpg.dao.EnemyDao;
 import jp.co.rpg.entity.BattleInfo;
 import jp.co.rpg.entity.Enemy;
 import jp.co.rpg.entity.User;
@@ -17,8 +16,6 @@ import jp.co.rpg.entity.User;
 public class BattleCommandDefense{
 	@Autowired
 	HttpSession session;
-	@Autowired
-	private EnemyDao enemyDao;
 
 	//ぼうぎょ
 	@RequestMapping("/defense")

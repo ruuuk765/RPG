@@ -112,6 +112,6 @@ section > ul > li:nth-child(2){
 .saveMsg{
 	display: none;
 }
-.color: rgb(179,54,67);{
+.errMsg{
 	color: rgb(179,54,67);
 }

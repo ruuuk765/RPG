@@ -24,7 +24,7 @@ public abstract class Chara {
 		}else {
 			//たたかう
 			damage = this.getPower() - chara.getDefense();
-			if(damage <0)
+			if(damage <= 0)
 				//最低ダメージは1とする
 				damage = 1;
 			bi.setContext(this.getName() + "は、" + chara.getName() + "に" + damage + "ダメージあたえた");

@@ -169,7 +169,8 @@ public class User extends Chara{
 	public void win(BattleInfo bi, Chara chara) {
 		Enemy enemy = (Enemy)chara;
 		bi.setStatus("win");
-		this.setXp(this.getXp() + enemy.getDropXp());
+		if(this.getLv() < 10)
+			this.setXp(this.getXp() + enemy.getDropXp());
 		this.setGold(this.getGold() + enemy.getDropGold());
 
 		if(this.getLv() >= 10)
@@ -199,11 +200,11 @@ public class User extends Chara{
 				bi.setContext("MPがたりなかった");
 				return;
 			}
-			Integer damege = this.getIntelligence() * magic.getMagicRate() - enemy.getDefense();
-			if(damege <= 0)
-				damege = 1;
-			bi.setContext(enemy.getName() + "に" + damege + "のダメージをあたえた");
-			enemy.setHp(enemy.getHp() - damege);
+			Integer damage = (int) (this.getIntelligence() * magic.getMagicRate() - enemy.getDefense());
+			if(damage <= 0)
+				damage = 1;
+			bi.setContext(enemy.getName() + "に" + damage + "のダメージをあたえた");
+			enemy.setHp(enemy.getHp() - damage);
 			this.setMp(this.getMp() - magic.getNeedMp());
 			break;
 		//かいふくまほう
@@ -213,7 +214,7 @@ public class User extends Chara{
 				return;
 			}
 
-			Integer healHp = this.getIntelligence() * magic.getMagicRate();
+			Integer healHp = (int) (this.getIntelligence() * magic.getMagicRate());
 			//回復量が最大HPを超過していた場合
 			if(healHp + this.getHp() > this.getMaxHp()) {
 				healHp = this.getMaxHp() - this.getHp();
@@ -237,12 +238,12 @@ public class User extends Chara{
 		final Integer DEFENSE_UP_RATE = 1;
 		final Integer SPEED_UP_RATE = 1;
 
-		Integer maxHpUp = (int) (Math.random() * 3 + 8) * MAX_HP_UP_RATE;
-		Integer maxMpUp = (int) (Math.random() * 3 + 8) * MAX_MP_UP_RATE;
-		Integer powerUp = (int) (Math.random() * 3 + 3) * POWER_UP_RATE;
-		Integer intelligenceUp = (int) (Math.random() * 3 +3) * INTELLIGENCE_UP_RATE;
-		Integer defenseUp = (int) (Math.random() * 3 + 3) * DEFENSE_UP_RATE;
-		Integer speedUp = (int) (Math.random() * 3 + 3) * SPEED_UP_RATE;
+		Integer maxHpUp = (int) (Math.random() * 3 + 4) * MAX_HP_UP_RATE;
+		Integer maxMpUp = (int) (Math.random() * 3 + 4) * MAX_MP_UP_RATE;
+		Integer powerUp = (int) (Math.random() * 3 + 4) * POWER_UP_RATE;
+		Integer intelligenceUp = (int) (Math.random() * 3 + 4) * INTELLIGENCE_UP_RATE;
+		Integer defenseUp = (int) (Math.random() * 3 + 4) * DEFENSE_UP_RATE;
+		Integer speedUp = (int) (Math.random() * 3 + 4) * SPEED_UP_RATE;
 
 		this.setLv(bi.getNextLv().getLv());
 		this.setXp(bi.getNextLv().getNeedXp());

@@ -48,7 +48,6 @@ public class ChangeRoleController {
 		user.setSpeed((int)Math.round((double)(user.getSpeed() /oldRole.getSpeedRate()  * newRole.getSpeedRate())));
 
 		user.setRoleId(roleId);
-		userDao.update(user);
 		session.setAttribute("role", newRole);
 		session.setAttribute("user", user);
 

@@ -6,7 +6,7 @@ public class Magic {
 	private Integer type;
 	private Integer needMp;
 	private Integer acquireLv;
-	private Integer magicRate;
+	private Float magicRate;
 
 	public Integer getId() {
 		return id;
@@ -38,10 +38,10 @@ public class Magic {
 	public void setAcquireLv(Integer acquireLv) {
 		this.acquireLv = acquireLv;
 	}
-	public Integer getMagicRate() {
+	public Float getMagicRate() {
 		return magicRate;
 	}
-	public void setMagicRate(Integer magicRate) {
+	public void setMagicRate(Float magicRate) {
 		this.magicRate = magicRate;
 	}
 }

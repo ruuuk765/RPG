@@ -35,7 +35,7 @@ $('head').append(
   });
 
   $(function(){
-		$('.errMsg').delay(1600).fadeOut("slow");
+		$('.errMsg').delay(2000).fadeOut("slow");
   });
 
  //バトル画面、ボスメッセージフェードアウト
