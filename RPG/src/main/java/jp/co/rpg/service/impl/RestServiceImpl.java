@@ -17,6 +17,7 @@ public class RestServiceImpl implements RestService {
 			user.setHp(user.getMaxHp());
 			user.setMp(user.getMaxMp());
 			user.setGold(((user.getGold())-restPrice));
+			user.setSinceDays(user.getSinceDays() + 1);
 			return true;
 		}
 		return false;
