@@ -72,6 +72,15 @@ public class User extends Chara{
 		this.lv = lv;
 	}
 
+	public void setHp(Integer hp) {
+		if(hp < 0)
+			hp = 0;
+		if(this.getMaxHp() < hp)
+			hp = this.getMaxHp();
+
+		this.hp = hp;
+	}
+
 	public Integer getMaxHp() {
 		return maxHp;
 	}
@@ -93,9 +102,8 @@ public class User extends Chara{
 	}
 
 	public void setXp(Integer xp) {
-		if(this.getLv() >= 10) {
+		if(this.getLv() >= 10)
 			xp = 0;
-		}
 		this.xp = xp;
 	}
 
@@ -163,17 +171,17 @@ public class User extends Chara{
 		bi.setStatus("win");
 		this.setXp(this.getXp() + enemy.getDropXp());
 		this.setGold(this.getGold() + enemy.getDropGold());
-		if(this.getLv() >= 10) {
+
+		if(this.getLv() >= 10)
 			enemy.setDropXp(0);
-		}
+
 		bi.setContext(enemy.getName() + "をたおした。<br>"
 				+ enemy.getDropXp() + "XPと"
-				+ enemy.getDropGold() + "G をかくとくした。");
-		//LVアップ判定
-		if(bi.getNextLv().getNeedXp() <= xp && lv <10) {
-			lvUp(bi);
-		}
+				+ enemy.getDropGold() + "G をかくとくした");
 
+		//LVアップ判定
+		if(bi.getNextLv().getNeedXp() <= xp && lv <10)
+			lvUp(bi);
 	}
 
 	//まほうこうげき
@@ -181,7 +189,7 @@ public class User extends Chara{
 	public void spellMagic(BattleInfo bi, Chara chara) {
 		Enemy enemy = (Enemy)chara;
 		Magic magic = bi.getMagic();
-		bi.setContext(this.getName() + "は" + magic.getName()+"を唱えた");
+		bi.setContext(this.getName() + "は" + magic.getName()+"をとなえた");
 
 		switch(magic.getType()) {
 
@@ -194,7 +202,7 @@ public class User extends Chara{
 			Integer damege = this.getIntelligence() * magic.getMagicRate() - enemy.getDefense();
 			if(damege <= 0)
 				damege = 1;
-			bi.setContext(enemy.getName() + "に" + damege + "のダメージを与えた");
+			bi.setContext(enemy.getName() + "に" + damege + "のダメージをあたえた");
 			enemy.setHp(enemy.getHp() - damege);
 			this.setMp(this.getMp() - magic.getNeedMp());
 			break;
@@ -251,9 +259,9 @@ public class User extends Chara{
 				"さいだいHPが" + maxHpUp + "<br>" +
 				"さいだいMPが" + maxMpUp + "<br>" +
 				"ちからが" + powerUp + "<br>" +
-				"ちりょくが" + intelligenceUp + "<br>" +
+				"かしこさが" + intelligenceUp + "<br>" +
 				"ぼうぎょが" + defenseUp + "。<br>" +
-				"はやさが" + speedUp + "あがった。"
+				"すばやさが" + speedUp + "あがった"
 		);
 		bi.setIsLvUp(true);
 	}

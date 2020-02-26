@@ -29,11 +29,14 @@ public class BattleCommandDefense{
 		Enemy enemy = (Enemy) session.getAttribute("enemy");
 		BattleInfo bi = new BattleInfo();
 		Integer userHp = user.getHp();
+		Integer damage = enemy.getPower() / 2 - user.getDefense();
+
+		if(damage < 0)
+			damage = 1;
 
 		bi.setContext(user.getName() + "はぼうぎょしている");
-		bi.setContext(enemy.getName() + "の攻撃");
-		bi.setContext(user.getName() + "は" + enemy.getPower() / 2 + "のダメージを受けた");
-		userHp -= enemy.getPower() / 2;
+		bi.setContext(enemy.getName() + "は、" + user.getName() + "に" + damage + "のダメージあたえた");
+		userHp -= damage;
 
 		if(userHp > 0) {
 			//バトル継続

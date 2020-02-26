@@ -9,6 +9,7 @@
     <meta charset="UTF-8">
     <title>勇者の冒険</title>
     <link rel="stylesheet" type="text/css" href="css/changeRole.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700&amp;subset=japanese" rel="stylesheet">
 </head>
 <body class="body">
     <section class="main">

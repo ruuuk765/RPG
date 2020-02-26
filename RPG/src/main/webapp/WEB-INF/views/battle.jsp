@@ -42,7 +42,7 @@
 					<li><p class="attack">たたかう</p></li>
 					<li><p class="magicList">まほう</p></li>
 					<li><p class="defense">ぼうぎょ</p></li>
-					<li><p><a href="home">にげる</a></p></li>
+					<li><p class="home">にげる</p></li>
 				</ul>
 			</div>
 			<div class="messageWindow">

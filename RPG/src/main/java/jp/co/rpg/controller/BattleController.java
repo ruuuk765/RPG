@@ -62,6 +62,7 @@ public class BattleController {
 			}else if(role.getId() == 3) {
 				magicList = magicDao.findAll();
 			}
+			//jsで操作しやすいよう、リストをずらす
 			magicList.add(0, null);
 			session.setAttribute("magicList", magicList);
 		}

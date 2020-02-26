@@ -203,6 +203,18 @@ $(function(){
     });
 });
 
+//にげる
+$(function(){
+    $('.home').on("click",function() {
+    	console.log(run);
+    	//実行中だと処理を行わない
+    	if(run)
+    		return false;
+			//ホームへ遷移
+		window.location.href = "/home";
+   });
+});
+
 
 
 //まほう一覧表示

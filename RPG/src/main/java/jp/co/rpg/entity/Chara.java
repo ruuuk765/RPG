@@ -27,17 +27,15 @@ public abstract class Chara {
 			if(damage <0)
 				//最低ダメージは1とする
 				damage = 1;
-			bi.setContext(this.getName() + "は、" + chara.getName() + "に" + damage + "ダメージあたえた。");
+			bi.setContext(this.getName() + "は、" + chara.getName() + "に" + damage + "ダメージあたえた");
 		}
 		Integer remainHp = chara.getHp() - damage;
 
 		//HPチェック
 		if(remainHp <= 0) {
-			remainHp = 0;
-			isCountinue = false;
-
 			//勝利or敗北
 			win(bi, chara);
+			isCountinue = false;
 		}
 		chara.setHp(remainHp);
 		return isCountinue;
@@ -65,6 +63,8 @@ public abstract class Chara {
 		return hp;
 	}
 	public void setHp(Integer hp) {
+		if(hp < 0)
+			hp = 0;
 		this.hp = hp;
 	}
 	public Integer getMp() {
