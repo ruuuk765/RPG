@@ -24,7 +24,7 @@
                     <div class="errorMsg">
                         <p><form:errors path="userId" /></p>
                     </div>
-                    <form:input path="userId" />
+                    <form:input path="userId"  maxlength="10"/>
                 </li>
                 <li>
                     <p>あんごう</p>
@@ -43,9 +43,9 @@
                 <li>
                     <p>なまえ</p>
                     <div class="errorMsg">
-                        <p><form:errors path="name" maxlength="5"/></p>
+                        <p><form:errors path="name"/></p>
                     </div>
-                    <form:input path="name" />
+                    <form:input path="name"  maxlength="5"/>
                 </li>
             </ul>
             <ul class="role">

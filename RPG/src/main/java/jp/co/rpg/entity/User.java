@@ -176,7 +176,7 @@ public class User extends Chara{
 		if(this.getLv() >= 10)
 			enemy.setDropXp(0);
 
-		bi.setContext("<p>" + enemy.getName() + "をたおした。</p>"
+		bi.setContext("<br><p>" + enemy.getName() + "をたおした。</p>"
 				+ "<p>" + enemy.getDropXp() + "XPと"
 				+ enemy.getDropGold() + "G をかくとくした</p>");
 
@@ -200,7 +200,7 @@ public class User extends Chara{
 				bi.setContext("MPがたりなかった");
 				return;
 			}
-			Integer damage = (int) (this.getIntelligence() * magic.getMagicRate() - enemy.getDefense());
+			Integer damage = (int) (this.getIntelligence() * magic.getMagicRate() - enemy.getDefense()) + (int) (Math.random() * 4) ;
 			if(damage <= 0)
 				damage = 1;
 			bi.setContext(enemy.getName() + "に" + damage + "のダメージをあたえた");
