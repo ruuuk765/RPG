@@ -21,7 +21,7 @@ public class UserDaoImpl implements UserDao {
 	private NamedParameterJdbcTemplate jdbcTemplate;
 
 	private static final String SQL_CREATE_ACCOUNT = "INSERT INTO users VALUES ("
-			+ "(SELECT MAX(id) + 1 FROM users), "
+			+ "(SELECT CASE WHEN (MAX(id) + 1) IS null THEN 1 ELSE MAX(id) + 1 END FROM users),"
 			+ ":user_id, :password, :name, :role_id, "
 			+ ":lv, :max_hp, :hp, :max_mp, :mp, :power, :intelligence, :defense, :speed, "
 			+ ":xp, :gold, :since_days, "

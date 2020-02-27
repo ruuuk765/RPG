@@ -7,12 +7,6 @@ public class Util {
 
 	//文字列がNULLまたは空文字の場合はTrueを返す
     public static boolean isNullOrEmpty(Object object) {
-//        if (str == null || str.isEmpty()) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-
     	if(object instanceof Integer) {
 			if(object != null) {
 				return false;
