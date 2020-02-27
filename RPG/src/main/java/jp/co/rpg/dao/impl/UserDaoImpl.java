@@ -49,8 +49,7 @@ public class UserDaoImpl implements UserDao {
 	public void createAccount(User user) {
 		MapSqlParameterSource param = new MapSqlParameterSource();
 		param.addValue("user_id", user.getUserId());
-		String encryptedPass = Util.hash(user.getPassword());
-		param.addValue("password", encryptedPass);
+		param.addValue("password", Util.hash(user.getPassword()));
 		param.addValue("name", user.getName());
 		param.addValue("role_id", user.getRole().getId());
 		param.addValue("lv", user.getLv());
@@ -85,8 +84,7 @@ public class UserDaoImpl implements UserDao {
 		}
 		if(!(Util.isNullOrEmpty(user.getPassword()))) {
 			forSearch.append(" AND password = :password");
-			String encryptedPass = Util.hash(user.getPassword());
-			param.addValue("password", encryptedPass);
+			param.addValue("password", Util.hash(user.getPassword()));
 		}
 
 		SQL_SELECT_FIND = forSearch.toString();
@@ -114,8 +112,7 @@ public class UserDaoImpl implements UserDao {
 	//アップデートメソッド
 	private MapSqlParameterSource usualUpdate(User user) {
 		MapSqlParameterSource param = new MapSqlParameterSource();
-		String encryptedPass = Util.hash(user.getPassword());
-		param.addValue("password", encryptedPass);
+		param.addValue("password", Util.hash(user.getPassword()));
 		param.addValue("name", user.getName());
 		param.addValue("role_id", user.getRole().getId());
 		param.addValue("lv", user.getLv());
