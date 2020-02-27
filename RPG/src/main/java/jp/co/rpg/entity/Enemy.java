@@ -33,6 +33,8 @@ public class Enemy extends Chara {
 	public void win(BattleInfo bi, Chara chara) {
 		User user = (User)chara;
 		user.setGold(user.getGold() / 2);
+		user.setHp(1);
+		bi.setUserHp(0);
 		bi.setStatus("lose");
 	}
 

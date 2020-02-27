@@ -23,7 +23,7 @@ public class EnemyDaoImpl implements EnemyDao {
 	@Override
 	public List<Enemy> findAppear(User user) {
 		MapSqlParameterSource param = new MapSqlParameterSource();
-		String sqlFindApper = "SELECT * FROM enemies WHERE appear_lv <= :lv";
+		String sqlFindApper = "SELECT * FROM enemies WHERE appear_lv <= :lv ORDER BY id";
 		param.addValue("lv", user.getLv());
 
 		return	jdbcTemplate.query(

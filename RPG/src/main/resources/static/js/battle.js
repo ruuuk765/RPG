@@ -7,91 +7,21 @@ var src = $('img').attr('src');
 if(src == 'img/enemy_999.gif')
 	boss = true;
 
-//こうげき
+
+
+//こうげき、まほう
 $(function(){
+    $('.attack, .magic').on('click',function(){
 
-
-    $('.attack').on('click',function(){
     	//実行中だと処理を行わない
     	if(run)
  		   return false;
     	run = true;
 
-        $.ajax({
-            url:'./attack',
-            type:'POST',
-            data:{"magicId":'0'},
-            dataType:"json",
-            success: function(bi){
+    	var magicId =  0;
+    	if($(this).attr("class") == 'magic')
+    		magicId =  $(this).attr("id");
 
-            	//メッセージ表示
-            	$('.magics').hide();
-        		$(".messages").html("<p>" + bi.context[0] +"<p>");
-            	for (var i = 1, l = bi.context.length; i < l; ++i) {
-        			$(".messages").append("<p>" + bi.context[i] +"<p>");
-            	}
-
-            	//ユーザーHP表示
-            	$(".userHp").html(bi.userHp);
-
-            	switch(bi.status){
-
-            		case "continue":
-            			setTimeout(function(){
-                			$(".messages").html("<p>どうする？<p>");
-                			 run = false;
-                		},1500);
-            			break;
-
-            		case "win":
-            			//敵画像を非表示
-            			$('.enemyWindow img').css('display','none');
-
-            			setTimeout(function(){
-            				if(bi.isLvUp){
-                        		$(".messages").html("<p>" + bi.lvUpContext +"<p>");
-                        		setTimeout(function(){
-                					//画面遷移
-                        			if(boss)
-                        				window.location.href = "/clear";
-                        			else
-                        				window.location.href = "/home";
-                				},4000);
-                        	}else{
-                        		//画面遷移
-                    			if(boss)
-                    				window.location.href = "/clear";
-                    			else
-                    				window.location.href = "/home";
-                        	}
-                		},2300);
-
-            			break;
-
-            		case "lose":
-            			setTimeout(function(){
-                			$(".messages").html("<p>まけてしまった...<p>");
-                		},1500);
-                		setTimeout(function(){
-                			//ホームへ遷移
-                			window.location.href = "/home";
-                		},4000);
-                		break;
-            	}
-            }
-        })
-
-    });
-});
-
-//まほう
-$(function(){
-    $('.magic').on('click',function(){
-    	var magicId =  $(this).attr("id");
-    	//実行中だと処理を行わない
-    	if(run)
- 		   return false;
-    	run = true;
         $.ajax({
             url:'./attack',
             type:'POST',
@@ -100,9 +30,9 @@ $(function(){
             success: function(bi){
             	//メッセージ表示
             	$('.magics').hide();
-        		$(".messages").html("<p>" + bi.context[0] +"<p>");
+        		$(".messages").html("<p>" + bi.context[0] +"</p>");
             	for (var i = 1, l = bi.context.length; i < l; ++i) {
-        			$(".messages").append("<p>" + bi.context[i] +"<p>");
+        			$(".messages").append("<p>" + bi.context[i] +"</p>");
             	}
 
             	//ユーザーHP表示
@@ -125,7 +55,9 @@ $(function(){
 
         			setTimeout(function(){
         				if(bi.isLvUp){
-                    		$(".messages").html("<p>" + bi.lvUpContext +"<p>");
+        					//ユーザーLV表示
+        	            	$(".userLv").html(bi.nextLv.lv);
+                    		$(".messages").html(bi.lvUpContext);
                     		setTimeout(function(){
                     			//画面遷移
                     			if(boss)
@@ -206,7 +138,6 @@ $(function(){
 //にげる
 $(function(){
     $('.home').on("click",function() {
-    	console.log(run);
     	//実行中だと処理を行わない
     	if(run)
     		return false;

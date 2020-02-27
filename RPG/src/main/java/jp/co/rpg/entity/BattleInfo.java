@@ -19,7 +19,6 @@ public class BattleInfo {
 	private boolean isMagic = false;
 	private boolean isLvUp = false;
 
-	private User user;
 	private Magic magic;
 	private Lv nextLv;
 
@@ -35,8 +34,8 @@ public class BattleInfo {
 		return status;
 	}
 
-	public void setStatus(String s) {
-		switch(s) {
+	public void setStatus(String status) {
+		switch(status) {
 		case "win":
 			this.status = WIN;
 			break;
@@ -44,20 +43,9 @@ public class BattleInfo {
 			this.status = LOSE;
 			break;
 		default:
-
 			this.status = CONTINUE;
 			break;
 		}
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-		this.userHp = user.getHp();
-		this.userMp = user.getMp();
 	}
 
 	public Integer getUserHp() {

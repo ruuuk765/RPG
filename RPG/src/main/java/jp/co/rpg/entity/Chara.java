@@ -16,28 +16,28 @@ public abstract class Chara {
 	public boolean battleCalc(BattleInfo bi,Chara chara) {
 
 		boolean isCountinue = true;
-		Integer damage = 0;
 
 		if(bi.getIsMagic()) {
 			//まほう
 			spellMagic(bi, chara);
 		}else {
 			//たたかう
-			damage = this.getPower() - chara.getDefense();
+			Integer damage = 0;
+			damage = this.getPower() + (int) (Math.random() * 4) - chara.getDefense();
 			if(damage <= 0)
-				//最低ダメージは1とする
 				damage = 1;
+			chara.setHp(chara.getHp() - damage);
 			bi.setContext(this.getName() + "は、" + chara.getName() + "に" + damage + "ダメージあたえた");
 		}
-		Integer remainHp = chara.getHp() - damage;
 
 		//HPチェック
-		if(remainHp <= 0) {
+		if(chara.getHp() <= 0) {
 			//勝利or敗北
 			win(bi, chara);
 			isCountinue = false;
+		}else {
+			chara.setHp(chara.getHp());
 		}
-		chara.setHp(remainHp);
 		return isCountinue;
 	}
 

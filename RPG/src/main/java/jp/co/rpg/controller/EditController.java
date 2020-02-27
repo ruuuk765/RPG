@@ -34,7 +34,7 @@ public class EditController {
 			return "edit";
 
 		if(!form.getPassword().equals(form.getRePassword())) {
-			model.addAttribute("errMsgEdit", "あんごう(かくにん)があんごうと同じでありません");
+			model.addAttribute("errMsgEdit", "あんごうとあんごう(かくにん)がいっちしません");
 			return "edit";
 		}
 

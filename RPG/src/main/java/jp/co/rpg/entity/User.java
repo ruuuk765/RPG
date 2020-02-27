@@ -176,9 +176,9 @@ public class User extends Chara{
 		if(this.getLv() >= 10)
 			enemy.setDropXp(0);
 
-		bi.setContext(enemy.getName() + "をたおした。<br>"
-				+ enemy.getDropXp() + "XPと"
-				+ enemy.getDropGold() + "G をかくとくした");
+		bi.setContext("<p>" + enemy.getName() + "をたおした。</p>"
+				+ "<p>" + enemy.getDropXp() + "XPと"
+				+ enemy.getDropGold() + "G をかくとくした</p>");
 
 		//LVアップ判定
 		if(bi.getNextLv().getNeedXp() <= xp && lv <10)
@@ -226,6 +226,8 @@ public class User extends Chara{
 			this.setMp(this.getMp() - magic.getNeedMp());
 			break;
 		}
+		bi.setUserHp(this.getHp());
+		bi.setUserMp(this.getMp());
 	}
 
 	//LVアップ
@@ -240,10 +242,10 @@ public class User extends Chara{
 
 		Integer maxHpUp = (int) (Math.random() * 3 + 4) * MAX_HP_UP_RATE;
 		Integer maxMpUp = (int) (Math.random() * 3 + 4) * MAX_MP_UP_RATE;
-		Integer powerUp = (int) (Math.random() * 3 + 4) * POWER_UP_RATE;
-		Integer intelligenceUp = (int) (Math.random() * 3 + 4) * INTELLIGENCE_UP_RATE;
-		Integer defenseUp = (int) (Math.random() * 3 + 4) * DEFENSE_UP_RATE;
-		Integer speedUp = (int) (Math.random() * 3 + 4) * SPEED_UP_RATE;
+		Integer powerUp = (int) (Math.random() * 4 + 3) * POWER_UP_RATE;
+		Integer intelligenceUp = (int) (Math.random() * 4 + 3) * INTELLIGENCE_UP_RATE;
+		Integer defenseUp = (int) (Math.random() * 4 + 3) * DEFENSE_UP_RATE;
+		Integer speedUp = (int) (Math.random() * 4 + 3) * SPEED_UP_RATE;
 
 		this.setLv(bi.getNextLv().getLv());
 		this.setXp(bi.getNextLv().getNeedXp());
@@ -256,13 +258,13 @@ public class User extends Chara{
 
 		//メッセージの格納
 		bi.setLvUpContext(
-				this.getName() + "はレベルがあがった！<br><br>" +
-				"さいだいHPが" + maxHpUp + "<br>" +
-				"さいだいMPが" + maxMpUp + "<br>" +
-				"ちからが" + powerUp + "<br>" +
-				"かしこさが" + intelligenceUp + "<br>" +
-				"ぼうぎょが" + defenseUp + "。<br>" +
-				"すばやさが" + speedUp + "あがった"
+				"<p>" + this.getName() + "はレベルがあがった！</p>" +
+				"<p>さいだいHPが" + maxHpUp + "</p>" +
+				"<p>さいだいMPが" + maxMpUp + "</p>" +
+				"<p>ちからが" + powerUp + "</p>" +
+				"<p>かしこさが" + intelligenceUp + "</p>" +
+				"<p>ぼうぎょが" + defenseUp + "。</p>" +
+				"<p>すばやさが" + speedUp + "あがった</p>"
 		);
 		bi.setIsLvUp(true);
 	}

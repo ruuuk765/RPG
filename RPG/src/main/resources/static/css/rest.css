@@ -30,5 +30,7 @@ p{
 .third{
     font-size: 80px;
     text-align: right;
+    position: relative;
+    left: 10px;
 }
 

@@ -57,9 +57,10 @@ public class BattleCommandAttack{
 				user.battleCalc(bi, enemy);
 			}
 		}
-
+		if(!bi.getStatus().equals("lose"))
+			bi.setUserHp(user.getHp());
+		bi.setUserMp(user.getMp());
 		session.setAttribute("user", user);
-		bi.setUser(user);
 		return bi;
 	}
 }

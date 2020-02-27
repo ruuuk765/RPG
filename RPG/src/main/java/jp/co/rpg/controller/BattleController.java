@@ -43,6 +43,16 @@ public class BattleController {
 			//出現LVがユーザーLV以下の敵データを取得
 			List<Enemy> enemyList = enemyDao.findAppear(user);
 
+			if(user.getLv() > 2) {
+				//LV3以上の時はスライム出現無し
+				enemyList.remove(0);
+
+				if(user.getLv() > 4) {
+					//LV5以上の時はキメラ出現無し
+					enemyList.remove(0);
+				}
+			}
+
 			//乱数を用いてリストから出現する敵を選択
 			Random random = new Random();
 			enemy = enemyList.get(random.nextInt(enemyList.size()));

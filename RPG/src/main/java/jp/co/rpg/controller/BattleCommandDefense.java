@@ -28,7 +28,7 @@ public class BattleCommandDefense{
 		Integer userHp = user.getHp();
 		Integer damage = enemy.getPower() / 2 - user.getDefense();
 
-		if(damage < 0)
+		if(damage <= 0)
 			damage = 1;
 
 		bi.setContext(user.getName() + "はぼうぎょしている");

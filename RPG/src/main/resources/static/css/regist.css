@@ -127,3 +127,9 @@ body > .errorMsg p{
     display: block;
     padding-top: .5px;
 }
+
+input:-internal-autofill-selected {
+	-webkit-box-shadow: 0 0 0px 1000px #333 inset;
+	-webkit-text-fill-color: #ccc  !important;
+	-webkit-text-size-adjust: 23px;
+}

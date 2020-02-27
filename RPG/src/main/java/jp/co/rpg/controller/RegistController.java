@@ -63,7 +63,7 @@ public class RegistController {
 
 //		passwordの確認
 		if(!((form.getPassword()).equals(form.getPasswordCheck()))) {
-			model.addAttribute("msg", "あんごうとあんごうかくにんがいっちしません");
+			model.addAttribute("msg", "あんごうとあんごう(かくにん)がいっちしません");
 			return "regist";
 		}
 
